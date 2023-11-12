@@ -6,6 +6,10 @@ public class Window extends JFrame {
     private static final int WINDOW_WIDTH = 1050;
     private static final int WINDOW_HEIGHT = 700;
 
+    private final OpeningScreen openingScreen;
+    private final OptionsScreen optionsScreen;
+
+
 
     public Window() {
 
@@ -14,6 +18,37 @@ public class Window extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("Tanks War");
         this.setLocationRelativeTo(null);
+
+
+        this.openingScreen = new OpeningScreen();
+        this.add(openingScreen);
+
+
+        this.optionsScreen = new OptionsScreen();
+        this.add(optionsScreen);
+        optionsScreen.setVisible(false);
+
+
+
+
+
+        this.openingScreen.getStart().addActionListener(e -> {
+            this.openingScreen.setVisible(false);
+            this.optionsScreen.setVisible(true);
+        });
+
+
+        this.optionsScreen.getGarage().addActionListener(e -> {
+            this.optionsScreen.setVisible(false);
+        });
+
+        this.optionsScreen.getGameScene().addActionListener(e -> {
+            this.optionsScreen.setVisible(false);
+        });
+
+        this.optionsScreen.getInstructions().addActionListener(e -> {
+            this.optionsScreen.setVisible(false);
+        });
 
 
     }
