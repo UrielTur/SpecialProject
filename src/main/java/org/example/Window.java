@@ -8,6 +8,7 @@ public class Window extends JFrame {
 
     private final OpeningScreen openingScreen;
     private final OptionsScreen optionsScreen;
+    private final GameScene gameScene;
 
 
 
@@ -28,6 +29,10 @@ public class Window extends JFrame {
         this.add(optionsScreen);
         optionsScreen.setVisible(false);
 
+        this.gameScene = new GameScene();
+        this.add(gameScene);
+        gameScene.setVisible(false);
+
 
 
 
@@ -37,14 +42,17 @@ public class Window extends JFrame {
             this.optionsScreen.setVisible(true);
         });
 
+        this.optionsScreen.getGameScene().addActionListener(e -> {
+            this.optionsScreen.setVisible(false);
+            this.gameScene.setVisible(true);
+        });
+
+
 
         this.optionsScreen.getGarage().addActionListener(e -> {
             this.optionsScreen.setVisible(false);
         });
 
-        this.optionsScreen.getGameScene().addActionListener(e -> {
-            this.optionsScreen.setVisible(false);
-        });
 
         this.optionsScreen.getInstructions().addActionListener(e -> {
             this.optionsScreen.setVisible(false);
