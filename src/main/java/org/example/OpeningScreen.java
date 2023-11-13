@@ -39,4 +39,9 @@ public class OpeningScreen extends JPanel {
     }
 
 
+    public JButton getStart() {
+        return start;
+    }
+
+
 }
