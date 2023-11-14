@@ -9,7 +9,8 @@ public class Tank {
 
     private BufferedImage tank;
     private int x;
-    private final int y = 150 ;
+    private final int y = Window.getWINDOW_HEIGHT()-290 ;
+
 
 
     public Tank(){
@@ -32,6 +33,9 @@ public class Tank {
         graphics.drawImage(scaledImage, this.x, this.y, null);
     }
 
+    public int getX() {
+        return x;
+    }
 
     public void move(double dx) {
         this.x += dx;

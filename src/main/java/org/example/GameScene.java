@@ -20,7 +20,6 @@ public class GameScene extends JPanel implements KeyListener {
 
 
 
-
     public GameScene(){
         this.setSize(Window.getWINDOW_WIDTH(), Window.getWINDOW_HEIGHT());
         setLayout(null);
@@ -44,6 +43,8 @@ public class GameScene extends JPanel implements KeyListener {
     public void paintComponent(Graphics graphics){
         super.paintComponent(graphics);
 
+        this.background1.paintIcon(null,graphics,this.xOfBackground1, this.yOfBackground1);
+        this.background2.paintIcon(null,graphics,this.xOfBackground2, this.yOfBackground2);
         this.tank.paintTank(graphics);
         this.terrorist.paintTerrorist(graphics);
 
