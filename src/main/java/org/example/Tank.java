@@ -35,7 +35,7 @@ public class Tank {
     }
 
 
-    public void move(int dx) {
+    public void move(double dx) {
         this.x += dx;
     }
 

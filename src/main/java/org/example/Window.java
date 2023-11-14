@@ -45,6 +45,9 @@ public class Window extends JFrame {
         this.optionsScreen.getGameScene().addActionListener(e -> {
             this.optionsScreen.setVisible(false);
             this.gameScene.setVisible(true);
+            this.gameScene.mainGameLoop();
+            this.gameScene.setFocusable(true);
+            this.gameScene.requestFocus();
         });
 
 

@@ -7,9 +7,8 @@ import java.awt.event.KeyListener;
 
 public class GameScene extends JPanel implements KeyListener {
 
-    private Tank tank;
-    private Terrorist terrorist;
-    private final boolean[] pressedKey;
+    private final Tank tank;
+    private final Terrorist terrorist;
 
 
 
@@ -20,16 +19,15 @@ public class GameScene extends JPanel implements KeyListener {
     public GameScene(){
         this.setSize(Window.getWINDOW_WIDTH(), Window.getWINDOW_HEIGHT());
         setLayout(null);
-        this.pressedKey = new boolean[1];
 
         this.tank = new Tank();
         this.terrorist = new Terrorist();
 
-        mainGameLoop();
-//        this.setDoubleBuffered(true);
-        this.addKeyListener(this);
+
         this.setFocusable(true);
         this.requestFocus();
+        this.addKeyListener(this);
+
 
 
 
@@ -48,11 +46,15 @@ public class GameScene extends JPanel implements KeyListener {
 
 
 
-    public synchronized void mainGameLoop(){
+    public void mainGameLoop(){
         new Thread(() -> {
 
             while (true){
                 repaint();
+
+
+
+
 
 
 
@@ -75,7 +77,7 @@ public class GameScene extends JPanel implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            tank.move(5);
+            tank.move(3);
         }
     }
 
