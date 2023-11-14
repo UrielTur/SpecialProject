@@ -14,8 +14,6 @@ public class Tank {
 
     public Tank(){
 
-
-
         try{
             this.tank = ImageIO.read(new File("src/main/resources/Tank.png"));
         }catch (Exception e){
