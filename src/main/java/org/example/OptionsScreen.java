@@ -10,12 +10,17 @@ public class OptionsScreen extends JPanel {
     private JButton instructions;
     private JButton garage;
     private JButton exitFromGame;
+    private final ImageIcon background;
+    private final int xOfBackground = 0;
+    private final int yOfBackground = 0;
+
 
 
     public OptionsScreen(){
 
         this.setSize(Window.getWINDOW_WIDTH(), Window.getWINDOW_HEIGHT());
         setLayout(null);
+
 
 
         this.gameScene = new JButton("Start Play");
@@ -41,6 +46,16 @@ public class OptionsScreen extends JPanel {
         });
         this.add(exitFromGame);
 
+        this.background = new ImageIcon("src/main/resources/TankBackground.png");
+
+
+    }
+
+
+    public void paintComponent(Graphics graphics){
+        super.paintComponent(graphics);
+
+        this.background.paintIcon(null,graphics,this.xOfBackground, this.yOfBackground);
 
     }
 

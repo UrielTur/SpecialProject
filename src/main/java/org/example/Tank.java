@@ -9,7 +9,7 @@ public class Tank {
 
     private BufferedImage tank;
     private int x;
-    private final int y = Window.getWINDOW_HEIGHT()-290 ;
+    private final int y = Window.getWINDOW_HEIGHT()-285 ;
 
 
 

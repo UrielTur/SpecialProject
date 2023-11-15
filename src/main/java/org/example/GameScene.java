@@ -9,6 +9,7 @@ public class GameScene extends JPanel implements KeyListener {
 
     private final Tank tank;
     private final Terrorist terrorist;
+    private final OptionsScreen optionsScreen;
     private final ImageIcon background1 = new ImageIcon("src/main/resources/Background.png");
     private final ImageIcon background2 = new ImageIcon("src/main/resources/Background.png");
 
@@ -26,6 +27,8 @@ public class GameScene extends JPanel implements KeyListener {
 
         this.tank = new Tank();
         this.terrorist = new Terrorist();
+
+        this.optionsScreen = new OptionsScreen();
 
 
         this.setFocusable(true);
@@ -59,6 +62,11 @@ public class GameScene extends JPanel implements KeyListener {
             while (true){
                 repaint();
 
+                if (this.xOfBackground1 <= -(Window.getWINDOW_WIDTH()*2)){
+                    this.xOfBackground1 = (Window.getWINDOW_WIDTH()*2);
+                } else if (this.xOfBackground2 <= -(Window.getWINDOW_WIDTH()*2)){
+                    this.xOfBackground2 = (Window.getWINDOW_WIDTH()*2);
+                }
 
 
 
@@ -78,8 +86,8 @@ public class GameScene extends JPanel implements KeyListener {
 
 
     public void moveBackground(){
-        this.xOfBackground1 -= 2;
-        this.xOfBackground2 -= 2;
+        this.xOfBackground1 -= 3;
+        this.xOfBackground2 -= 3;
     }
 
 

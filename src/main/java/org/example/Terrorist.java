@@ -9,7 +9,7 @@ public class Terrorist {
 
     private BufferedImage terrorist;
     private int x = 450;
-    private final int y = Window.getWINDOW_HEIGHT()-120 ;
+    private final int y = Window.getWINDOW_HEIGHT()-155 ;
 
 
 
@@ -30,8 +30,8 @@ public class Terrorist {
 
 
     public void paintTerrorist(Graphics graphics) {
-        int newWidth = 50;
-        int newHeight = 76;
+        int newWidth = 65;
+        int newHeight = 85;
         Image scaledImage = this.terrorist.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage, this.x, this.y, null);
     }
