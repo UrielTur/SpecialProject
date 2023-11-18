@@ -11,7 +11,7 @@ public class GameScene extends JPanel implements KeyListener {
     private final Terrorist terrorist;
     private final OptionsScreen optionsScreen;
     private final ImageIcon background1 = new ImageIcon("src/main/resources/Background.png");
-    private final ImageIcon background2 = new ImageIcon("src/main/resources/Background.png");
+    private final ImageIcon background2 = new ImageIcon("src/main/resources/OppositeBackground.jpg");
 
     private int xOfBackground1 = 0;
     private int xOfBackground2 = ((Window.getWINDOW_WIDTH())*2);
@@ -86,8 +86,8 @@ public class GameScene extends JPanel implements KeyListener {
 
 
     public void moveBackground(){
-        this.xOfBackground1 -= 3;
-        this.xOfBackground2 -= 3;
+        this.xOfBackground1 -= 7;
+        this.xOfBackground2 -= 7;
     }
 
 
