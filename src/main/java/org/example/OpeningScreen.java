@@ -8,15 +8,15 @@ public class OpeningScreen extends JPanel {
 
 
 
-    private JButton start;
+    private JButton enter;
     private final int xHeader = 350;
     private final int yHeader = 180;
     private final int widthHeader = 550;
     private final int heightHeader = 70;
-    private final int xStart = 450;
-    private final int yStart = 400;
-    private final int widthStart = 100;
-    private final int heightStart = 70;
+    private final int xEnter = 440;
+    private final int yEnter = 400;
+    private final int widthEnter = 120;
+    private final int heightEnter = 80;
 
 
 
@@ -25,17 +25,20 @@ public class OpeningScreen extends JPanel {
         this.setLayout(null);
         this.setBackground(Color.BLUE);
         this.header = new JLabel("TANKS WAR");
-        this.header.setFont(new Font("Arial" , Font.BOLD , 50));
+        this.header.setFont(new Font("Arial" , Font.ITALIC , 50));
         this.header.setBounds(xHeader,yHeader,widthHeader,heightHeader);
-        this.start = new JButton("start");
-        this.start.setBounds(xStart, yStart, widthStart, heightStart);
+        this.enter = new JButton("enter");
+        this.enter.setBounds(xEnter, yEnter, widthEnter, heightEnter);
+        this.enter.setFont(new Font("Arial",Font.BOLD, 30));
+        this.enter.setFocusable(false);
+
         this.add(header);
-        this.add(start);
+        this.add(enter);
     }
 
 
-    public JButton getStart() {
-        return start;
+    public JButton getEnter() {
+        return enter;
     }
 
 

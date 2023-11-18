@@ -86,8 +86,8 @@ public class GameScene extends JPanel implements KeyListener {
 
 
     public void moveBackground(){
-        this.xOfBackground1 -= 7;
-        this.xOfBackground2 -= 7;
+        this.xOfBackground1 -= 3;
+        this.xOfBackground2 -= 3;
     }
 
 

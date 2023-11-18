@@ -37,7 +37,7 @@ public class Window extends JFrame {
 
 
 
-        this.openingScreen.getStart().addActionListener(e -> {
+        this.openingScreen.getEnter().addActionListener(e -> {
             this.openingScreen.setVisible(false);
             this.optionsScreen.setVisible(true);
         });
