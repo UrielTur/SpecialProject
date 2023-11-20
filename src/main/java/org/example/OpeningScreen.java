@@ -5,19 +5,18 @@ import java.awt.*;
 
 public class OpeningScreen extends JPanel {
     private JLabel header;
-
-
-
     private JButton enter;
-    private final int xHeader = 350;
+    private final int xHeader = 305;
     private final int yHeader = 180;
     private final int widthHeader = 550;
     private final int heightHeader = 70;
-    private final int xEnter = 440;
-    private final int yEnter = 400;
+    private final int xEnter = 460;
+    private final int yEnter = 510;
     private final int widthEnter = 120;
     private final int heightEnter = 80;
-
+    private final ImageIcon background = new ImageIcon("src/main/resources/OpeningScreen background.jpeg");
+    private final int xOfBackground = 0;
+    private final int yOfBackground = 0;
 
 
     public OpeningScreen(){
@@ -25,23 +24,27 @@ public class OpeningScreen extends JPanel {
         this.setLayout(null);
         this.setBackground(Color.BLUE);
         this.header = new JLabel("TANKS WAR");
-        this.header.setFont(new Font("Arial" , Font.ITALIC , 50));
         this.header.setBounds(xHeader,yHeader,widthHeader,heightHeader);
+        this.header.setFont(new Font("Arial" , Font.BOLD, 70));
+        this.header.setForeground(new Color(0xE011F909, true));
+
         this.enter = new JButton("enter");
         this.enter.setBounds(xEnter, yEnter, widthEnter, heightEnter);
-        this.enter.setFont(new Font("Arial",Font.BOLD, 30));
+        this.enter.setFont(new Font("Arial",Font.BOLD, 35));
+        this.enter.setForeground(new Color(0xE011F909, true));
         this.enter.setFocusable(false);
 
         this.add(header);
         this.add(enter);
     }
 
+    public void paintComponent(Graphics graphics){
+        super.paintComponent(graphics);
+        this.background.paintIcon(null,graphics,this.xOfBackground, this.yOfBackground);
+    }
 
     public JButton getEnter() {
         return enter;
     }
-
-
-
 
 }

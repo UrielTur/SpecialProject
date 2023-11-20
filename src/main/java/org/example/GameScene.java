@@ -25,7 +25,6 @@ public class GameScene extends JPanel implements KeyListener {
 
 
 
-
     public GameScene(){
         this.setSize(Window.getWINDOW_WIDTH(), Window.getWINDOW_HEIGHT());
         setLayout(null);
@@ -39,16 +38,9 @@ public class GameScene extends JPanel implements KeyListener {
         this.terrorist4 = new Terrorist(Window.getWINDOW_WIDTH()+200,Window.getWINDOW_WIDTH()*2);
         this.terrorist5 = new Terrorist(Window.getWINDOW_WIDTH()+250,Window.getWINDOW_WIDTH()*2);
 
-
-
-
         this.setFocusable(true);
         this.requestFocus();
         this.addKeyListener(this);
-
-
-
-
     }
 
 
@@ -65,10 +57,7 @@ public class GameScene extends JPanel implements KeyListener {
         this.terrorist5.paintTerrorist(graphics);
 
         this.tank.paintTank(graphics);
-
-
     }
-
 
 
     public synchronized void mainGameLoop(){
@@ -88,8 +77,6 @@ public class GameScene extends JPanel implements KeyListener {
                 this.terrorist3.move();
                 this.terrorist4.move();
                 this.terrorist5.move();
-
-
 
                 try {
                     Thread.sleep(1);

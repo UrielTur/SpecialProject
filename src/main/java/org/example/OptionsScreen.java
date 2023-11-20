@@ -48,15 +48,12 @@ public class OptionsScreen extends JPanel {
 
         this.background = new ImageIcon("src/main/resources/TankBackground.png");
 
-
     }
 
 
     public void paintComponent(Graphics graphics){
         super.paintComponent(graphics);
-
         this.background.paintIcon(null,graphics,this.xOfBackground, this.yOfBackground);
-
     }
 
     public JButton getGameScene() {
