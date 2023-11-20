@@ -4,18 +4,21 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.Random;
 
 public class Terrorist {
 
     private BufferedImage terrorist;
-    private int x = 450;
-    private final int y = Window.getWINDOW_HEIGHT()-155 ;
+    private float x;
+    private final int y;
 
 
 
-    public Terrorist(){
+    public Terrorist(int origin, int bound){
+        Random random = new Random();
 
-
+        this.x = random.nextInt(origin , bound);
+        this.y = Window.getWINDOW_HEIGHT()-155;
 
         try{
             this.terrorist = ImageIO.read(new File("src/main/resources/terr-removebg-preview.png"));
@@ -33,6 +36,10 @@ public class Terrorist {
         int newWidth = 65;
         int newHeight = 85;
         Image scaledImage = this.terrorist.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-        graphics.drawImage(scaledImage, this.x, this.y, null);
+        graphics.drawImage(scaledImage, (int) this.x, this.y, null);
+    }
+
+    public void move(){
+        this.x -= 0.20;
     }
 }

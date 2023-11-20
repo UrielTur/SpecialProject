@@ -8,10 +8,15 @@ import java.awt.event.KeyListener;
 public class GameScene extends JPanel implements KeyListener {
 
     private final Tank tank;
-    private final Terrorist terrorist;
+    private Terrorist terrorist1;
+    private Terrorist terrorist2;
+    private Terrorist terrorist3;
+    private Terrorist terrorist4;
+    private Terrorist terrorist5;
+
     private final OptionsScreen optionsScreen;
     private final ImageIcon background1 = new ImageIcon("src/main/resources/Background.png");
-    private final ImageIcon background2 = new ImageIcon("src/main/resources/OppositeBackground.jpg");
+    private final ImageIcon background2 = new ImageIcon("src/main/resources/OppositeBackground.png");
 
     private int xOfBackground1 = 0;
     private int xOfBackground2 = ((Window.getWINDOW_WIDTH())*2);
@@ -26,9 +31,15 @@ public class GameScene extends JPanel implements KeyListener {
         setLayout(null);
 
         this.tank = new Tank();
-        this.terrorist = new Terrorist();
-
         this.optionsScreen = new OptionsScreen();
+
+        this.terrorist1 = new Terrorist(Window.getWINDOW_WIDTH()+40,Window.getWINDOW_WIDTH()*2);
+        this.terrorist2 = new Terrorist(Window.getWINDOW_WIDTH()+100,Window.getWINDOW_WIDTH()*2);
+        this.terrorist3 = new Terrorist(Window.getWINDOW_WIDTH()+160,Window.getWINDOW_WIDTH()*2);
+        this.terrorist4 = new Terrorist(Window.getWINDOW_WIDTH()+200,Window.getWINDOW_WIDTH()*2);
+        this.terrorist5 = new Terrorist(Window.getWINDOW_WIDTH()+250,Window.getWINDOW_WIDTH()*2);
+
+
 
 
         this.setFocusable(true);
@@ -48,15 +59,21 @@ public class GameScene extends JPanel implements KeyListener {
 
         this.background1.paintIcon(null,graphics,this.xOfBackground1, this.yOfBackground1);
         this.background2.paintIcon(null,graphics,this.xOfBackground2, this.yOfBackground2);
+
+        this.terrorist1.paintTerrorist(graphics);
+        this.terrorist2.paintTerrorist(graphics);
+        this.terrorist3.paintTerrorist(graphics);
+        this.terrorist4.paintTerrorist(graphics);
+        this.terrorist5.paintTerrorist(graphics);
+
         this.tank.paintTank(graphics);
-        this.terrorist.paintTerrorist(graphics);
 
 
     }
 
 
 
-    public void mainGameLoop(){
+    public synchronized void mainGameLoop(){
         new Thread(() -> {
 
             while (true){
@@ -73,10 +90,12 @@ public class GameScene extends JPanel implements KeyListener {
 
 
 
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
-
-
-
 
 
         }).start();
@@ -88,6 +107,13 @@ public class GameScene extends JPanel implements KeyListener {
     public void moveBackground(){
         this.xOfBackground1 -= 3;
         this.xOfBackground2 -= 3;
+    }
+    
+    public void terroristsMove(){
+        for (int i = 0; i <= 5; i++) {
+            
+        }
+        
     }
 
 
