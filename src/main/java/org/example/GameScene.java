@@ -49,8 +49,6 @@ public class GameScene extends JPanel implements KeyListener {
 
 
 
-
-
     }
 
 
@@ -85,8 +83,11 @@ public class GameScene extends JPanel implements KeyListener {
                     this.xOfBackground2 = (Window.getWINDOW_WIDTH()*2);
                 }
 
-
-
+                this.terrorist1.move();
+                this.terrorist2.move();
+                this.terrorist3.move();
+                this.terrorist4.move();
+                this.terrorist5.move();
 
 
 
