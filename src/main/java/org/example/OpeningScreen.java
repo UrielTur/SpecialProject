@@ -2,8 +2,10 @@ package org.example;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class OpeningScreen extends JPanel {
+public class OpeningScreen extends JPanel{
     private JLabel header;
     private JButton enter;
     private final int xHeader = 305;
@@ -32,19 +34,41 @@ public class OpeningScreen extends JPanel {
         this.enter.setBounds(xEnter, yEnter, widthEnter, heightEnter);
         this.enter.setFont(new Font("Arial",Font.BOLD, 35));
         this.enter.setForeground(new Color(0xE011F909, true));
-        this.enter.setFocusable(false);
+        this.enter.setFocusable(true);
+        this.enter.setFocusPainted(false);//מבטל את המסגרת התמידית מסביב לטקסט
+        this.enter.setBorder(null);//מבטל את המסגרת המופיעה כשהעכבר על הכפתור
+
+        this.enter.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER){
+                    enter.doClick();
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
 
         this.add(header);
         this.add(enter);
     }
+
 
     public void paintComponent(Graphics graphics){
         super.paintComponent(graphics);
         this.background.paintIcon(null,graphics,this.xOfBackground, this.yOfBackground);
     }
 
+
     public JButton getEnter() {
         return enter;
     }
+
 
 }

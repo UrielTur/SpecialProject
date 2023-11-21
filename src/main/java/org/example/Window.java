@@ -42,6 +42,7 @@ public class Window extends JFrame {
             this.optionsScreen.setVisible(true);
         });
 
+
         this.optionsScreen.getGameScene().addActionListener(e -> {
             this.optionsScreen.setVisible(false);
             this.gameScene.setVisible(true);
