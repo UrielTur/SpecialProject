@@ -15,8 +15,8 @@ public class GameScene extends JPanel implements KeyListener {
     private Terrorist terrorist5;
 
     private final OptionsScreen optionsScreen;
-    private final ImageIcon background1 = new ImageIcon("src/main/resources/Background.png");
-    private final ImageIcon background2 = new ImageIcon("src/main/resources/OppositeBackground.png");
+    private final ImageIcon background1 = new ImageIcon("src/main/resources/GameBackground.png");
+    private final ImageIcon background2 = new ImageIcon("src/main/resources/OppositeBackground1.png");
 
     private int xOfBackground1 = 0;
     private int xOfBackground2 = ((Window.getWINDOW_WIDTH())*2);
@@ -72,14 +72,14 @@ public class GameScene extends JPanel implements KeyListener {
                     this.xOfBackground2 = (Window.getWINDOW_WIDTH()*2);
                 }
 
-                this.terrorist1.move();
-                this.terrorist2.move();
-                this.terrorist3.move();
-                this.terrorist4.move();
-                this.terrorist5.move();
+                this.terrorist1.move(2);
+                this.terrorist2.move(2);
+                this.terrorist3.move(2);
+                this.terrorist4.move(2);
+                this.terrorist5.move(2);
 
                 try {
-                    Thread.sleep(1);
+                    Thread.sleep(10);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -93,8 +93,8 @@ public class GameScene extends JPanel implements KeyListener {
 
 
     public void moveBackground(){
-        this.xOfBackground1 -= 3;
-        this.xOfBackground2 -= 3;
+        this.xOfBackground1 -= 2;
+        this.xOfBackground2 -= 2;
     }
     
     public void terroristsMove(){
@@ -113,6 +113,11 @@ public class GameScene extends JPanel implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            this.terrorist1.move(1);
+            this.terrorist2.move(1);
+            this.terrorist3.move(1);
+            this.terrorist4.move(1);
+            this.terrorist5.move(1);
 
             if (this.tank.getX() <= 66) {
                 tank.move(3);
