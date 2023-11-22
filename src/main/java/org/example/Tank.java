@@ -25,8 +25,8 @@ public class Tank {
             e.printStackTrace();
         }
 
-
-
+//        this.rocket = new Rocket();
+//        this.rocket.setX(66+this.width-rocket.getWidth());
     }
 
 
@@ -35,6 +35,10 @@ public class Tank {
         this.height = 340;
         Image scaledImage = this.tank.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage, this.x, this.y, null);
+    }
+
+    public int getWidth() {
+        return width;
     }
 
     public int getX() {

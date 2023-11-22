@@ -23,6 +23,9 @@ public class GameScene extends JPanel implements KeyListener {
     private int xOfBackground2 = ((Window.getWINDOW_WIDTH())*2);
     private int yOfBackground1 = -35;
     private int yOfBackground2 = -35;
+    private boolean isFire = false;
+    private boolean collision = false;
+
 
 
 
@@ -30,6 +33,7 @@ public class GameScene extends JPanel implements KeyListener {
         this.setSize(Window.getWINDOW_WIDTH(), Window.getWINDOW_HEIGHT());
         setLayout(null);
 
+        this.optionsScreen = new OptionsScreen();
         this.tank = new Tank();
         this.rocket = new Rocket();
         this.rocket.setX(tank.getWidth()- rocket.getWidth()+310);
@@ -58,6 +62,7 @@ public class GameScene extends JPanel implements KeyListener {
         this.terrorist4.paintTerrorist(graphics);
         this.terrorist5.paintTerrorist(graphics);
 
+        this.rocket.paintRocket(graphics);
         this.tank.paintTank(graphics);
     }
 
@@ -117,17 +122,25 @@ public class GameScene extends JPanel implements KeyListener {
     }
 
 
-    public void moveBackground(){
+    public void moveBackground() {
         this.xOfBackground1 -= 2;
         this.xOfBackground2 -= 2;
     }
-    
-    public void terroristsMove(){
-        for (int i = 0; i <= 5; i++) {
-            
+
+
+    public boolean collision() {
+        if (terrorist1.catchTheTerrorist().intersects(this.rocket.calculateRectangle()) || terrorist2.catchTheTerrorist().intersects(this.rocket.calculateRectangle()) || terrorist3.catchTheTerrorist().intersects(this.rocket.calculateRectangle()) || terrorist4.catchTheTerrorist().intersects(this.rocket.calculateRectangle()) || terrorist5.catchTheTerrorist().intersects(this.rocket.calculateRectangle())) {
+            collision = true;
         }
-        
+
+        return collision;
     }
+
+
+
+
+
+
 
 
     @Override
@@ -150,6 +163,9 @@ public class GameScene extends JPanel implements KeyListener {
             if (this.tank.getX() > 66){
                 moveBackground();
             }
+        }
+        if (e.getKeyCode() == KeyEvent.VK_SPACE){
+           this.isFire = true;
         }
     }
 

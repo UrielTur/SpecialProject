@@ -11,6 +11,8 @@ public class Terrorist {
     private BufferedImage terrorist;
     private float x;
     private final int y;
+    private int width = 65;
+    private int height = 85;
 
 
 
@@ -31,9 +33,8 @@ public class Terrorist {
 
 
     public void paintTerrorist(Graphics graphics) {
-        int newWidth = 65;
-        int newHeight = 85;
-        Image scaledImage = this.terrorist.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+
+        Image scaledImage = this.terrorist.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage, (int) this.x, this.y, null);
     }
 
