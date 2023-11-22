@@ -40,4 +40,10 @@ public class Terrorist {
     public void move(int dx){
         this.x -= dx;
     }
+
+
+
+    public Rectangle catchTheTerrorist() {
+        return new Rectangle ((int) this.x, this.y , this.width, this.height);
+    }
 }

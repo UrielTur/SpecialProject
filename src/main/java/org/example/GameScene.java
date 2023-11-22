@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 public class GameScene extends JPanel implements KeyListener {
 
     private final Tank tank;
+    private final Rocket rocket;
     private Terrorist terrorist1;
     private Terrorist terrorist2;
     private Terrorist terrorist3;
@@ -30,7 +31,8 @@ public class GameScene extends JPanel implements KeyListener {
         setLayout(null);
 
         this.tank = new Tank();
-        this.optionsScreen = new OptionsScreen();
+        this.rocket = new Rocket();
+        this.rocket.setX(tank.getWidth()- rocket.getWidth()+310);
 
         this.terrorist1 = new Terrorist(Window.getWINDOW_WIDTH()+40,Window.getWINDOW_WIDTH()*2);
         this.terrorist2 = new Terrorist(Window.getWINDOW_WIDTH()+100,Window.getWINDOW_WIDTH()*2);
@@ -72,14 +74,37 @@ public class GameScene extends JPanel implements KeyListener {
                     this.xOfBackground2 = (Window.getWINDOW_WIDTH()*2);
                 }
 
-                this.terrorist1.move(2);
-                this.terrorist2.move(2);
-                this.terrorist3.move(2);
-                this.terrorist4.move(2);
-                this.terrorist5.move(2);
+                this.terrorist1.move(1);
+                this.terrorist2.move(1);
+                this.terrorist3.move(1);
+                this.terrorist4.move(1);
+                this.terrorist5.move(1);
+
+                if (isFire){
+                    this.rocket.fire();
+                }
+
+//
+//                boolean hasCollision1 = collision(this.terrorist1);
+//                boolean hasCollision2 = collision(this.terrorist2);
+//                boolean hasCollision3 = collision(this.terrorist3);
+//                boolean hasCollision4 = collision(this.terrorist4);
+//                boolean hasCollision5 = collision(this.terrorist5);
+
+
+                this.collision();
+                if (collision || this.rocket.getX() > Window.getWINDOW_WIDTH()){
+                    this.rocket.setX(350);
+                    isFire = false;
+                    collision = false;
+                    
+                }
+
+
+
 
                 try {
-                    Thread.sleep(10);
+                    Thread.sleep(8);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
