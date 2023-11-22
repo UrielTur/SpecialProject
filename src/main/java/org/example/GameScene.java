@@ -102,7 +102,7 @@ public class GameScene extends JPanel implements KeyListener {
                     this.rocket.setX(350);
                     isFire = false;
                     collision = false;
-                    
+
                 }
 
 
