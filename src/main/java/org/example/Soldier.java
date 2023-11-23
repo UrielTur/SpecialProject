@@ -6,9 +6,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Random;
 
-public class Terrorist {
+public class Soldier {
 
-    private BufferedImage terrorist;
+    private BufferedImage soldier;
+
     private float x;
     private final int y;
     private int width = 65;
@@ -16,16 +17,14 @@ public class Terrorist {
     private Random random;
 
 
-
-
-    public Terrorist(int origin, int bound){
+    public Soldier(int origin, int bound){
         this.random = new Random();
 
         this.x = random.nextInt(origin , bound);
         this.y = Window.getWINDOW_HEIGHT()-155;
 
         try{
-            this.terrorist = ImageIO.read(new File("src/main/resources/terr-removebg-preview.png"));
+            this.soldier = ImageIO.read(new File("src/main/resources/soldier-min.png"));
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -34,16 +33,14 @@ public class Terrorist {
     }
 
 
-    public void paintTerrorist(Graphics graphics) {
-
-        Image scaledImage = this.terrorist.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+    public void paintSoldier(Graphics graphics) {
+        Image scaledImage = this.soldier.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage, (int) this.x, this.y, null);
     }
 
     public void move(int dx){
         this.x -= dx;
     }
-
 
     public void setX(float x) {
         this.x = x;
@@ -57,10 +54,10 @@ public class Terrorist {
         this.x = random.nextInt(origin , bound);
     }
 
-    public Rectangle catchTheTerrorist() {
+    public Rectangle catchTheSoldier() {
         return new Rectangle ((int) this.x, this.y , this.width, this.height);
     }
+
+
+
 }
-
-
-

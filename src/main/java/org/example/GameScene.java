@@ -43,7 +43,16 @@ public class GameScene extends JPanel implements KeyListener {
         this.terrorist3 = new Terrorist(Window.getWINDOW_WIDTH()+160,Window.getWINDOW_WIDTH()*2);
         this.terrorist4 = new Terrorist(Window.getWINDOW_WIDTH()+200,Window.getWINDOW_WIDTH()*2);
         this.terrorist5 = new Terrorist(Window.getWINDOW_WIDTH()+250,Window.getWINDOW_WIDTH()*2);
+        
+        this.soldier1 = new Soldier(Window.getWINDOW_WIDTH()+200,Window.getWINDOW_WIDTH()*2);
+        this.soldier2 = new Soldier(Window.getWINDOW_WIDTH()+200,Window.getWINDOW_WIDTH()*2);
 
+
+
+        this.terrorists = List.of(terrorist1, terrorist2, terrorist3, terrorist4, terrorist5);
+        this.soldiers = List.of(soldier1, soldier2);
+
+        
         this.setFocusable(true);
         this.requestFocus();
         this.addKeyListener(this);
@@ -99,17 +108,24 @@ public class GameScene extends JPanel implements KeyListener {
 
                 this.collision();
                 if (collision || this.rocket.getX() > Window.getWINDOW_WIDTH()){
+                    terrorists.get(indexTerrorist).dead(Window.getWINDOW_WIDTH()+250 , Window.getWINDOW_WIDTH()*2);
+                    soldiers.get(indexSoldier).dead(Window.getWINDOW_WIDTH()+250 , Window.getWINDOW_WIDTH()*2);
                     this.rocket.setX(350);
                     isFire = false;
                     collision = false;
 
+                }
+                this.passLimit();
+                if (isPassLimit){
+                    terrorists.get(indexTerrorist).dead(Window.getWINDOW_WIDTH()+250 , Window.getWINDOW_WIDTH()*2);
+                    soldiers.get(indexSoldier).dead(Window.getWINDOW_WIDTH()+250 , Window.getWINDOW_WIDTH()*2);
                 }
 
 
 
 
                 try {
-                    Thread.sleep(8);
+                    Thread.sleep(6);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -156,6 +172,9 @@ public class GameScene extends JPanel implements KeyListener {
             this.terrorist3.move(1);
             this.terrorist4.move(1);
             this.terrorist5.move(1);
+
+            this.soldier1.move(1);
+            this.soldier2.move(1);
 
             if (this.tank.getX() <= 66) {
                 tank.move(3);
