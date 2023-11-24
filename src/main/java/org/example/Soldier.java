@@ -12,9 +12,9 @@ public class Soldier {
 
     private float x;
     private final int y;
-    private int width = 65;
-    private int height = 85;
-    private Random random;
+    private final int width = 65;
+    private final int height = 85;
+    private final Random random;
 
 
     public Soldier(int origin, int bound){

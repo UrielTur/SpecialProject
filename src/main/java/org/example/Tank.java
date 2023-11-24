@@ -9,10 +9,9 @@ public class Tank {
 
     private BufferedImage tank;
     private int x;
-    private int width;
-    private int height;
+    private final int width = 330;
+    private final int height = 340;
     private final int y = Window.getWINDOW_HEIGHT()-285 ;
-//    private Rocket rocket;
 
 
 
@@ -24,15 +23,12 @@ public class Tank {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-//        this.rocket = new Rocket();
-//        this.rocket.setX(66+this.width-rocket.getWidth());
     }
 
 
     public void paintTank(Graphics graphics) {
-        this.width = 330;
-        this.height = 340;
+//        this.width = 330;
+//        this.height = 340;
         Image scaledImage = this.tank.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage, this.x, this.y, null);
     }

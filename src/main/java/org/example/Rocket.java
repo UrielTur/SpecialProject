@@ -8,7 +8,7 @@ import java.io.File;
 public class Rocket {
 
     private int x;
-    private int y;
+    private final int y;
     private int width = 50;
     private int height = 15;
 
@@ -16,7 +16,7 @@ public class Rocket {
 
 
     public Rocket(){
-
+        this.x = 260;
         this.y = Window.getWINDOW_HEIGHT()-146;
 
 

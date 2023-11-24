@@ -9,17 +9,18 @@ import java.util.List;
 public class GameScene extends JPanel implements KeyListener {
 
     private final Tank tank;
+    private final Helicopter helicopter;
     private final Rocket rocket;
-    private Terrorist terrorist1;
-    private Terrorist terrorist2;
-    private Terrorist terrorist3;
-    private Terrorist terrorist4;
-    private Terrorist terrorist5;
-    private List<Terrorist> terrorists;
+    private final Terrorist terrorist1;
+    private final Terrorist terrorist2;
+    private final Terrorist terrorist3;
+    private final Terrorist terrorist4;
+    private final Terrorist terrorist5;
+    private final List<Terrorist> terrorists;
 
-    private Soldier soldier1;
-    private Soldier soldier2;
-    private List<Soldier> soldiers;
+    private final Soldier soldier1;
+    private final Soldier soldier2;
+    private final List<Soldier> soldiers;
 
 
     private final OptionsScreen optionsScreen;
@@ -28,8 +29,8 @@ public class GameScene extends JPanel implements KeyListener {
 
     private int xOfBackground1 = 0;
     private int xOfBackground2 = ((Window.getWINDOW_WIDTH())*2);
-    private int yOfBackground1 = -35;
-    private int yOfBackground2 = -35;
+    private final int yOfBackground1 = -35;
+    private final int yOfBackground2 = -35;
     private boolean isFire = false;
     private boolean collision = false;
     private boolean isPassLimit = false;
@@ -48,7 +49,7 @@ public class GameScene extends JPanel implements KeyListener {
         this.optionsScreen = new OptionsScreen();
         this.tank = new Tank();
         this.rocket = new Rocket();
-        this.rocket.setX(tank.getWidth()- rocket.getWidth()+310);
+        this.helicopter = new Helicopter();
 
         this.terrorist1 = new Terrorist(Window.getWINDOW_WIDTH()+40,Window.getWINDOW_WIDTH()*2);
         this.terrorist2 = new Terrorist(Window.getWINDOW_WIDTH()+100,Window.getWINDOW_WIDTH()*2);
@@ -76,6 +77,7 @@ public class GameScene extends JPanel implements KeyListener {
 
         this.background1.paintIcon(null,graphics,this.xOfBackground1, this.yOfBackground1);
         this.background2.paintIcon(null,graphics,this.xOfBackground2, this.yOfBackground2);
+        this.helicopter.paintHelicopter(graphics);
 
         this.terrorists.get(0).paintTerrorist(graphics);
         this.terrorists.get(1).paintTerrorist(graphics);
@@ -141,7 +143,7 @@ public class GameScene extends JPanel implements KeyListener {
 
 
                 try {
-                    Thread.sleep(6);
+                    Thread.sleep(5);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
