@@ -60,6 +60,9 @@ public class Terrorist {
     public Rectangle catchTheTerrorist() {
         return new Rectangle ((int) this.x, this.y , this.width, this.height);
     }
+    public Rectangle distanceRectangle() {
+        return new Rectangle ((int) this.x - 30, this.y , this.width + 15, this.height);
+    }
 }
 
 

@@ -108,8 +108,9 @@ public class GameScene extends JPanel implements KeyListener {
     public synchronized void mainGameLoop(){
         new Thread(() -> {
 
-            while (true){
+            while (counterOfMisses < 3){
                 repaint();
+                safetyDistance();
 
                 if (this.xOfBackground1 <= -(Window.getWINDOW_WIDTH()*2)){
                     this.xOfBackground1 = (Window.getWINDOW_WIDTH()*2);
@@ -119,15 +120,18 @@ public class GameScene extends JPanel implements KeyListener {
 
                 if (this.tank.getX() > 66){
 
-                    this.terrorists.get(0).move(1);
-                    this.terrorists.get(1).move(1);
-                    this.terrorists.get(2).move(1);
-                    this.terrorists.get(3).move(1);
-                    this.terrorists.get(4).move(1);
+                    this.terrorists.get(0).move(2);
+                    this.terrorists.get(1).move(2);
+                    this.terrorists.get(2).move(2);
+                    this.terrorists.get(3).move(2);
+                    this.terrorists.get(4).move(2);
                     
-                    this.soldiers.get(0).move(1);
-                    this.soldiers.get(1).move(1);
+                    this.soldiers.get(0).move(2);
+                    this.soldiers.get(1).move(2);
+
+                    moveBackground();
                 }
+
 
                 if (isFire){
                     this.rocket.fire();
@@ -139,23 +143,30 @@ public class GameScene extends JPanel implements KeyListener {
                     isFire = false;
                 }
                 if (soldierHasCollision){
-                    soldiers.get(indexSoldier).dead(Window.getWINDOW_WIDTH()+250 , Window.getWINDOW_WIDTH()*2);
+                    soldiers.get(indexSoldier).dead(Window.getWINDOW_WIDTH()+250 , Window.getWINDOW_WIDTH()*4);
+                    this.counterOfMisses++;
+                    System.out.println(counterOfMisses);
                     soldierHasCollision = false;
                 }
                 if (terroristHasCollision){
-                    terrorists.get(indexTerrorist).dead(Window.getWINDOW_WIDTH()+250 , Window.getWINDOW_WIDTH()*2);
+                    terrorists.get(indexTerrorist).dead(Window.getWINDOW_WIDTH()+250 , Window.getWINDOW_WIDTH()*4);
+                    this.counterOfSuccess++;
                     terroristHasCollision = false;
                 }
 
                 this.checkPassLimit();
                 if (terroristPassLimit){
-                    terrorists.get(indexTerrorist).dead(Window.getWINDOW_WIDTH()+250 , Window.getWINDOW_WIDTH()*2);
+                    terrorists.get(indexTerrorist).dead(Window.getWINDOW_WIDTH()+250 , Window.getWINDOW_WIDTH()*4);
+                    this.counterOfMisses++;
+                    System.out.println(counterOfMisses);
+                    this.terroristPassLimit = false;
                 }
 
                 if (soldierPassLimit) {
                     soldiers.get(indexSoldier).moveUp(2);
                     if (soldiers.get(indexSoldier).getY() <= Window.getWINDOW_HEIGHT()/3) {
-                        soldiers.get(indexSoldier).dead(Window.getWINDOW_WIDTH() + 250, Window.getWINDOW_WIDTH() * 2);
+                        soldiers.get(indexSoldier).dead(Window.getWINDOW_WIDTH() + 250, Window.getWINDOW_WIDTH()*4);
+                        this.counterOfSurvivors++;
                         this.soldierPassLimit = false;
                     }
 
@@ -171,7 +182,7 @@ public class GameScene extends JPanel implements KeyListener {
 
 
                 try {
-                    Thread.sleep(6);
+                    Thread.sleep(9);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -184,8 +195,8 @@ public class GameScene extends JPanel implements KeyListener {
 
 
     public void moveBackground() {
-        this.xOfBackground1 -= 2;
-        this.xOfBackground2 -= 2;
+        this.xOfBackground1 -= 1;
+        this.xOfBackground2 -= 1;
     }
 
 
@@ -285,9 +296,6 @@ public class GameScene extends JPanel implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             if (this.tank.getX() <= 66) {
                 tank.move(3);
-            }
-            if (this.tank.getX() > 66){
-                moveBackground();
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE){
