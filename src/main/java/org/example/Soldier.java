@@ -15,7 +15,7 @@ public class Soldier {
     private final int width = 65;
     private final int height = 85;
     private final Random random;
-    private boolean isDone = false;
+    private boolean isMove = true;
 
 
     public Soldier(int origin, int bound){
@@ -40,9 +40,10 @@ public class Soldier {
     }
 
     public void move(int dx){
-        if (this.x != (Window.getWINDOW_WIDTH()/2) - 32) {
+        if (this.x >= (Window.getWINDOW_WIDTH()/2) - 32 && this.isMove) {
             this.x -= dx;
         }
+
     }
     public void moveUp(int dy){
             this.y -= dy;
@@ -58,6 +59,14 @@ public class Soldier {
 
     public float getY() {
         return y;
+    }
+
+    public boolean isMove() {
+        return isMove;
+    }
+
+    public void setMove(boolean move) {
+        isMove = move;
     }
 
     public void dead(int origin, int bound){
