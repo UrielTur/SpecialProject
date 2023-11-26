@@ -36,6 +36,7 @@ public class GameScene extends JPanel implements KeyListener {
     private boolean soldierHasCollision = false;
     private boolean terroristPassLimit = false;
     private boolean soldierPassLimit = false;
+
     private int indexTerrorist = 0;
     private int indexSoldier = 0;
 
@@ -117,7 +118,6 @@ public class GameScene extends JPanel implements KeyListener {
                     
                     this.soldiers.get(0).move(1);
                     this.soldiers.get(1).move(1);
-                    
                 }
 
                 if (isFire){
@@ -142,8 +142,14 @@ public class GameScene extends JPanel implements KeyListener {
                 if (terroristPassLimit){
                     terrorists.get(indexTerrorist).dead(Window.getWINDOW_WIDTH()+250 , Window.getWINDOW_WIDTH()*2);
                 }
-                if (soldierPassLimit){
-                    soldiers.get(indexSoldier).dead(Window.getWINDOW_WIDTH()+250 , Window.getWINDOW_WIDTH()*2);
+
+                if (soldierPassLimit) {
+                    soldiers.get(indexSoldier).moveUp(2);
+                    if (soldiers.get(indexSoldier).getY() <= Window.getWINDOW_HEIGHT()/3) {
+                        soldiers.get(indexSoldier).dead(Window.getWINDOW_WIDTH() + 250, Window.getWINDOW_WIDTH() * 2);
+                        this.soldierPassLimit = false;
+                    }
+
                 }
 
 
@@ -223,11 +229,11 @@ public class GameScene extends JPanel implements KeyListener {
             terroristPassLimit = true;
         }
 
-        if (soldier1.getX() <= (Window.getWINDOW_WIDTH()/2)){
+        if (soldier1.getX() <= (Window.getWINDOW_WIDTH()/2) - 32){
             indexSoldier = 0;
             soldierPassLimit = true;
         }
-        if (soldier2.getX() <= (Window.getWINDOW_WIDTH()/2)){
+        if (soldier2.getX() <= (Window.getWINDOW_WIDTH()/2) - 32){
             indexSoldier = 1;
             soldierPassLimit = true;
         }
