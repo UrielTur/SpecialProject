@@ -19,7 +19,7 @@ public class Helicopter {
 
     public Helicopter() {
         try {
-            this.helicopter = ImageIO.read(new File("src/main/resources/helicopter.png"));
+            this.helicopter = ImageIO.read(new File("src/main/resources/Helicopter.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
