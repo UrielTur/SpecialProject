@@ -9,6 +9,7 @@ public class Window extends JFrame {
     private final OpeningScreen openingScreen;
     private final OptionsScreen optionsScreen;
     private final GameScene gameScene;
+    private final ClickSound clickSound;
 
 
 
@@ -33,17 +34,24 @@ public class Window extends JFrame {
         this.add(gameScene);
         gameScene.setVisible(false);
 
+        this.clickSound = new ClickSound();
+
+
+
+
 
 
 
 
         this.openingScreen.getEnter().addActionListener(e -> {
+            this.clickSound.playClickAudio();
             this.openingScreen.setVisible(false);
             this.optionsScreen.setVisible(true);
         });
 
 
         this.optionsScreen.getGameScene().addActionListener(e -> {
+            this.clickSound.playClickAudio();
             this.optionsScreen.setVisible(false);
             this.gameScene.setVisible(true);
             this.gameScene.mainGameLoop();
@@ -54,11 +62,13 @@ public class Window extends JFrame {
 
 
         this.optionsScreen.getGarage().addActionListener(e -> {
+            this.clickSound.playClickAudio();
             this.optionsScreen.setVisible(false);
         });
 
 
         this.optionsScreen.getInstructions().addActionListener(e -> {
+            this.clickSound.playClickAudio();
             this.optionsScreen.setVisible(false);
         });
 
