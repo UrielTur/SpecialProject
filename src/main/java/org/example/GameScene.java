@@ -43,9 +43,15 @@ public class GameScene extends JPanel implements KeyListener {
     private int indexTerrorist = 0;
     private int indexSoldier = 0;
     private int counterOfSurvivors = 0;
-    private int counterOfSuccess = 0;
+    private int counterOfHits = 0;
     private int counterOfMisses = 0;
+    private int easy = 9;
+    private int medium = 7;
+    private int hard = 6;
+    private int difficultLevel = easy;
 
+    private JLabel labelHits;
+    private JLabel labelSurvivors;
 
 
 
@@ -73,6 +79,20 @@ public class GameScene extends JPanel implements KeyListener {
 
         this.terrorists = List.of(terrorist1, terrorist2, terrorist3, terrorist4, terrorist5);
         this.soldiers = List.of(soldier1, soldier2);
+
+        this.labelHits = new JLabel(String.valueOf(counterOfHits));
+        this.labelHits.setBounds(65,10,40,40);
+        this.labelHits.setFont(new Font("Arial" , Font.BOLD, 30));
+//        this.labelHits.setForeground(new Color(Color.black, true));
+        this.add(labelHits);
+
+        this.labelSurvivors = new JLabel("Survivors " + String.valueOf(counterOfSurvivors));
+        this.labelSurvivors.setBounds(10,60,200,40);
+        this.labelSurvivors.setFont(new Font("Arial" , Font.BOLD, 30));
+//        this.labelSurvivors.setForeground(new Color(0xE011F909, true));
+        this.add(labelSurvivors);
+
+
 
         this.heartsOfLife = new HeartsOfLife();
         this.hits = new Hits();
@@ -104,6 +124,8 @@ public class GameScene extends JPanel implements KeyListener {
         this.rocket.paintRocket(graphics);
         this.tank.paintTank(graphics);
 
+        this.labelHits.setText(String.valueOf(counterOfHits));
+        this.labelSurvivors.setText("Survivors " + String.valueOf(counterOfSurvivors));
         this.heartsOfLife.paintHearts(graphics);
         this.hits.paintHitsIcon(graphics);
     }
@@ -154,7 +176,7 @@ public class GameScene extends JPanel implements KeyListener {
                 }
                 if (terroristHasCollision){
                     terrorists.get(indexTerrorist).dead(Window.getWINDOW_WIDTH()+250 , Window.getWINDOW_WIDTH()*5);
-                    this.counterOfSuccess++;
+                    this.counterOfHits++;
                     terroristHasCollision = false;
                 }
 
@@ -173,7 +195,7 @@ public class GameScene extends JPanel implements KeyListener {
                     if (soldiers.get(0).getY() <= Window.getWINDOW_HEIGHT()/3) {
                         soldiers.get(0).dead(Window.getWINDOW_WIDTH() + 250, Window.getWINDOW_WIDTH()*5);
                         this.counterOfSurvivors++;
-                        this.soldierPassLimit = false;
+                        this.soldier1PassLimit = false;
                     }
                 }
                 if (soldier2PassLimit) {
@@ -194,6 +216,12 @@ public class GameScene extends JPanel implements KeyListener {
                     heartsOfLife.hideHeart1();
                 }
 
+
+                if (this.counterOfHits > 15 &&  this.counterOfHits <= 30) {
+                    this.difficultLevel = medium;
+                } else if (this.counterOfHits > 30) {
+                    this.difficultLevel = hard;
+                }
 
                 try {
                     Thread.sleep(this.difficultLevel);
@@ -239,7 +267,7 @@ public class GameScene extends JPanel implements KeyListener {
 
         if (soldier1.catchTheSoldier().intersects(this.rocket.calculateRectangle())){
             soldierHasCollision = true;
-            indexSoldier =0;
+            indexSoldier = 0;
         }
         if (soldier2.catchTheSoldier().intersects(this.rocket.calculateRectangle())) {
             soldierHasCollision = true;
@@ -272,8 +300,7 @@ public class GameScene extends JPanel implements KeyListener {
         }
 
         if (soldier1.getX() <= (Window.getWINDOW_WIDTH()/2) - 32){
-            indexSoldier = 0;
-            soldierPassLimit = true;
+            soldier1PassLimit = true;
         }
         if (soldier2.getX() <= (Window.getWINDOW_WIDTH()/2) - 32){
             soldier2PassLimit = true;
