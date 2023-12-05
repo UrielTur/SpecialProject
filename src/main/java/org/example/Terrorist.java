@@ -61,7 +61,11 @@ public class Terrorist {
         return new Rectangle ((int) this.x, this.y , this.width, this.height);
     }
     public Rectangle distanceRectangle() {
-        return new Rectangle ((int) this.x - 30, this.y , this.width + 15, this.height);
+        return new Rectangle ((int) this.x - 45, this.y , this.width + 45, this.height);
+    }
+
+    public Rectangle distanceRectangleDouble() {
+        return new Rectangle ((int) this.x - 50, this.y , this.width + 50, this.height);
     }
 }
 

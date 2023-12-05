@@ -16,7 +16,7 @@ public class HeartsOfLife {
     private boolean showHeart3 = true;
 
 
-    private final int x = 10;
+    private final int x = Window.getWINDOW_WIDTH() - 170;
     private final int y = 10;
     private final int width = 40;
     private final int height = 40;
@@ -48,11 +48,11 @@ public class HeartsOfLife {
         }
         if (showHeart2) {
             Image scaledImage2 = this.heart2.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-            graphics.drawImage(scaledImage2, this.x * 6, this.y, null);
+            graphics.drawImage(scaledImage2, this.x + 50, this.y, null);
         }
         if (showHeart3) {
             Image scaledImage3 = this.heart3.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-            graphics.drawImage(scaledImage3, this.x * 11, this.y, null);
+            graphics.drawImage(scaledImage3, this.x + 100, this.y, null);
         }
     }
 
