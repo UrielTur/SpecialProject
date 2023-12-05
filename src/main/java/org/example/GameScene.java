@@ -306,6 +306,7 @@ public class GameScene extends JPanel implements KeyListener {
             soldier2PassLimit = true;
         }
 
+
     }
 
 
