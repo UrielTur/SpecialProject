@@ -1,8 +1,6 @@
 package org.example;
 
-import javax.sound.sampled.AudioSystem;
 import javax.swing.*;
-import java.io.File;
 
 public class Window extends JFrame {
     private static final int WINDOW_WIDTH = 1050;
@@ -17,6 +15,7 @@ public class Window extends JFrame {
 
 
     public Window() {
+
         this.warBackgroundSound = new WarBackgroundSound();
         this.warBackgroundSound.setPlay(true);
         this.warBackgroundSound.playWarSound();
@@ -55,6 +54,7 @@ public class Window extends JFrame {
 
 
         this.optionsScreen.getGameScene().addActionListener(e -> {
+            this.warBackgroundSound.stopPlay();
             this.clickSound.playClickAudio();
             this.optionsScreen.setVisible(false);
             this.gameScene.setVisible(true);

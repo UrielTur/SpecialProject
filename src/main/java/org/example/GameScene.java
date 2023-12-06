@@ -60,6 +60,7 @@ public class GameScene extends JPanel implements KeyListener {
         this.setSize(Window.getWINDOW_WIDTH(), Window.getWINDOW_HEIGHT());
         setLayout(null);
 
+
         this.optionsScreen = new OptionsScreen();
         this.tank = new Tank();
         this.rocket = new Rocket();

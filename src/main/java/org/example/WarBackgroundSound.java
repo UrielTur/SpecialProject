@@ -31,6 +31,10 @@ public class WarBackgroundSound {
     public void setPlay(boolean play) {
         isPlay = play;
     }
+
+    public void stopPlay() {
+        this.clip.close();
+    }
 }
 
 
