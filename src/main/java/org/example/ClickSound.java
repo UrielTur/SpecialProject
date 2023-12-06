@@ -10,6 +10,7 @@ public class ClickSound {
 
     private AudioInputStream audioInputStream;
     private Clip clip;
+    private boolean isPlay = false;
 
 
 
@@ -18,14 +19,19 @@ public class ClickSound {
             audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/resources/clickSound.wav").getAbsoluteFile());
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
+
+            if (isPlay){
+                clip.start();
+            }
         } catch(Exception ex){
             System.out.println("Error with playing sound.");
             ex.printStackTrace();
         }
-        clip.start();
 
     }
 
-
+    public void setPlay(boolean play) {
+        isPlay = play;
+    }
 }
 

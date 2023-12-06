@@ -22,11 +22,11 @@ public class OptionsScreen extends JPanel {
         setLayout(null);
 
 
-
         this.gameScene = new JButton("Start Play");
         this.gameScene.setBounds(10, 600, 150, 50); // מגדיר מיקום וגודל לכפתור
         this.gameScene.setFont(new Font("Arial" , Font.BOLD , 25));
         this.add(gameScene);
+
 
         this.garage = new JButton("Garage");
         this.garage.setBounds(190, 600, 150, 50); // מגדיר מיקום וגודל לכפתור

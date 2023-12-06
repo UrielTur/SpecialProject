@@ -81,7 +81,7 @@ public class GameScene extends JPanel implements KeyListener {
         this.soldiers = List.of(soldier1, soldier2);
 
         this.labelHits = new JLabel(String.valueOf(counterOfHits));
-        this.labelHits.setBounds(65,10,40,40);
+        this.labelHits.setBounds(65,10,200,40);
         this.labelHits.setFont(new Font("Arial" , Font.BOLD, 30));
 //        this.labelHits.setForeground(new Color(Color.black, true));
         this.add(labelHits);

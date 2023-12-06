@@ -1,6 +1,8 @@
 package org.example;
 
+import javax.sound.sampled.AudioSystem;
 import javax.swing.*;
+import java.io.File;
 
 public class Window extends JFrame {
     private static final int WINDOW_WIDTH = 1050;
@@ -14,6 +16,9 @@ public class Window extends JFrame {
 
 
     public Window() {
+        this.clickSound = new ClickSound();
+        this.clickSound.setPlay(true);
+        this.clickSound.playClickAudio();
 
         this.setResizable(false);
         this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -33,13 +38,6 @@ public class Window extends JFrame {
         this.gameScene = new GameScene();
         this.add(gameScene);
         gameScene.setVisible(false);
-
-        this.clickSound = new ClickSound();
-
-
-
-
-
 
 
 
