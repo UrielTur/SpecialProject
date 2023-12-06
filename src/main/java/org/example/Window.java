@@ -12,10 +12,16 @@ public class Window extends JFrame {
     private final OptionsScreen optionsScreen;
     private final GameScene gameScene;
     private final ClickSound clickSound;
+    private final WarBackgroundSound warBackgroundSound;
 
 
 
     public Window() {
+        this.warBackgroundSound = new WarBackgroundSound();
+        this.warBackgroundSound.setPlay(true);
+        this.warBackgroundSound.playWarSound();
+
+
         this.clickSound = new ClickSound();
         this.clickSound.setPlay(true);
         this.clickSound.playClickAudio();

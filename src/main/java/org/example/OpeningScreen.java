@@ -1,6 +1,7 @@
 package org.example;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -9,7 +10,7 @@ public class OpeningScreen extends JPanel{
     private JLabel header;
     private JButton enter;
     private final int xHeader = 305;
-    private final int yHeader = 180;
+    private final int yHeader = 150;
     private final int widthHeader = 550;
     private final int heightHeader = 70;
     private final int xEnter = 460;
@@ -28,12 +29,14 @@ public class OpeningScreen extends JPanel{
         this.header = new JLabel("TANKS WAR");
         this.header.setBounds(xHeader,yHeader,widthHeader,heightHeader);
         this.header.setFont(new Font("Arial" , Font.BOLD, 70));
-        this.header.setForeground(new Color(0xE011F909, true));
+        this.header.setForeground(Color.white);
 
-        this.enter = new JButton("enter");
+
+        this.enter = new JButton("Enter");
         this.enter.setBounds(xEnter, yEnter, widthEnter, heightEnter);
         this.enter.setFont(new Font("Arial",Font.BOLD, 35));
-        this.enter.setForeground(new Color(0xE011F909, true));
+        this.enter.setForeground(Color.BLACK);
+        this.enter.setBackground(Color.gray);
         this.enter.setFocusable(true);
         this.enter.setFocusPainted(false);//מבטל את המסגרת התמידית מסביב לטקסט
         this.enter.setBorder(null);//מבטל את המסגרת המופיעה כשהעכבר על הכפתור
