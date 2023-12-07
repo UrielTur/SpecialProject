@@ -10,7 +10,8 @@ public class Window extends JFrame {
     private final OptionsScreen optionsScreen;
     private final GameScene gameScene;
     private final ClickSound clickSound;
-    private final WarBackgroundSound warBackgroundSound;
+    private final LobbyBackgroundSound lobbyBackgroundSound;
+    private final SceneBackgroundSound sceneBackgroundSound;
 
 
 

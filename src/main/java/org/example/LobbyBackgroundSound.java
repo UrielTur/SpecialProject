@@ -18,9 +18,9 @@ public class LobbyBackgroundSound {
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
 
-            if (isPlay){
-                clip.start();
-            }
+            clip.start();
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+
         } catch(Exception ex){
             System.out.println("Error with playing sound.");
             ex.printStackTrace();

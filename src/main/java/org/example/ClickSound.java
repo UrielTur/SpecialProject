@@ -20,9 +20,8 @@ public class ClickSound {
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
 
-            if (isPlay){
-                clip.start();
-            }
+            clip.start();
+
         } catch(Exception ex){
             System.out.println("Error with playing sound.");
             ex.printStackTrace();

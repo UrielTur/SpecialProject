@@ -52,6 +52,8 @@ public class GameScene extends JPanel implements KeyListener {
     private JLabel labelHits;
     private JLabel labelSurvivors;
 
+    private FireSound fireSound;
+
 
 
 
@@ -59,6 +61,7 @@ public class GameScene extends JPanel implements KeyListener {
         this.setSize(Window.getWINDOW_WIDTH(), Window.getWINDOW_HEIGHT());
         setLayout(null);
 
+        this.fireSound = new FireSound();
 
         this.optionsScreen = new OptionsScreen();
         this.tank = new Tank();
@@ -222,6 +225,7 @@ public class GameScene extends JPanel implements KeyListener {
                 } else if (this.counterOfHits > 30) {
                     this.difficultLevel = hard;
                 }
+
 
                 try {
                     Thread.sleep(this.difficultLevel);
