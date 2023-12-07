@@ -17,7 +17,6 @@ public class GameScene extends JPanel implements KeyListener {
     private final Terrorist terrorist4;
     private final Terrorist terrorist5;
     private final List<Terrorist> terrorists;
-
     private final Soldier soldier1;
     private final Soldier soldier2;
     private final List<Soldier> soldiers;
@@ -265,7 +264,6 @@ public class GameScene extends JPanel implements KeyListener {
             terroristHasCollision = true;
             indexTerrorist = 4;
         }
-
         if (soldier1.catchTheSoldier().intersects(this.rocket.calculateRectangle())){
             soldierHasCollision = true;
             indexSoldier = 0;
@@ -343,6 +341,9 @@ public class GameScene extends JPanel implements KeyListener {
     }
 
 
+
+
+
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -357,6 +358,9 @@ public class GameScene extends JPanel implements KeyListener {
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE){
             if (this.tank.getX() > 66){
+                if (!isFire) {
+                    this.fireSound.playFireSound();
+                }
                 this.isFire = true;
             }
         }
@@ -366,5 +370,6 @@ public class GameScene extends JPanel implements KeyListener {
     public void keyReleased(KeyEvent e) {
 
     }
+
 }
 

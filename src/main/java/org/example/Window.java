@@ -16,13 +16,15 @@ public class Window extends JFrame {
 
     public Window() {
 
-        this.warBackgroundSound = new WarBackgroundSound();
-        this.warBackgroundSound.setPlay(true);
-        this.warBackgroundSound.playWarSound();
+        this.lobbyBackgroundSound = new LobbyBackgroundSound();
+        this.lobbyBackgroundSound.playWarSound();
+
+        this.sceneBackgroundSound = new SceneBackgroundSound();
+
+
 
 
         this.clickSound = new ClickSound();
-        this.clickSound.setPlay(true);
         this.clickSound.playClickAudio();
 
         this.setResizable(false);
@@ -54,7 +56,8 @@ public class Window extends JFrame {
 
 
         this.optionsScreen.getGameScene().addActionListener(e -> {
-            this.warBackgroundSound.stopPlay();
+            this.lobbyBackgroundSound.stopPlay();
+            this.sceneBackgroundSound.playWarSound();
             this.clickSound.playClickAudio();
             this.optionsScreen.setVisible(false);
             this.gameScene.setVisible(true);
