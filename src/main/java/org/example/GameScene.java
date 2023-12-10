@@ -75,8 +75,8 @@ public class GameScene extends JPanel implements KeyListener {
         this.terrorist4 = new Terrorist(Window.getWINDOW_WIDTH()+200,Window.getWINDOW_WIDTH()*6);
         this.terrorist5 = new Terrorist(Window.getWINDOW_WIDTH()+250,Window.getWINDOW_WIDTH()*6);
         
-        this.soldier1 = new Soldier(Window.getWINDOW_WIDTH()+200,Window.getWINDOW_WIDTH()*6);
-        this.soldier2 = new Soldier(Window.getWINDOW_WIDTH()+200,Window.getWINDOW_WIDTH()*6);
+        this.soldier1 = new Soldier((short) (Window.getWINDOW_WIDTH()+200), (short) (Window.getWINDOW_WIDTH()*6));
+        this.soldier2 = new Soldier((short) (Window.getWINDOW_WIDTH()+200), (short) (Window.getWINDOW_WIDTH()*6));
 
 
 
@@ -172,7 +172,7 @@ public class GameScene extends JPanel implements KeyListener {
                     isFire = false;
                 }
                 if (soldierHasCollision){
-                    soldiers.get(indexSoldier).dead(Window.getWINDOW_WIDTH()+250 , Window.getWINDOW_WIDTH()*5);
+                    soldiers.get(indexSoldier).dead((short) (Window.getWINDOW_WIDTH()+250), (short) (Window.getWINDOW_WIDTH()*5));
                     this.counterOfMisses++;
                     System.out.println(counterOfMisses);
                     soldierHasCollision = false;
@@ -196,7 +196,7 @@ public class GameScene extends JPanel implements KeyListener {
                 if (soldier1PassLimit) {
                     soldiers.get(0).moveUp(2);
                     if (soldiers.get(0).getY() <= Window.getWINDOW_HEIGHT()/3) {
-                        soldiers.get(0).dead(Window.getWINDOW_WIDTH() + 250, Window.getWINDOW_WIDTH()*5);
+                        soldiers.get(0).dead((short) (Window.getWINDOW_WIDTH() + 250), (short) (Window.getWINDOW_WIDTH()*5));
                         this.counterOfSurvivors++;
                         this.soldier1PassLimit = false;
                     }
@@ -204,7 +204,7 @@ public class GameScene extends JPanel implements KeyListener {
                 if (soldier2PassLimit) {
                     soldiers.get(1).moveUp(2);
                     if (soldiers.get(1).getY() <= Window.getWINDOW_HEIGHT()/3) {
-                        soldiers.get(1).dead(Window.getWINDOW_WIDTH() + 250, Window.getWINDOW_WIDTH()*5);
+                        soldiers.get(1).dead((short) (Window.getWINDOW_WIDTH() + 250), (short) (Window.getWINDOW_WIDTH()*5));
                         this.counterOfSurvivors++;
                         this.soldier2PassLimit = false;
                     }

@@ -10,19 +10,19 @@ public class Soldier {
 
     private BufferedImage soldier;
 
-    private float x;
-    private float y;
-    private final int width = 65;
-    private final int height = 85;
+    private short x;
+    private short y;
+    private final byte width = 65;
+    private final byte height = 85;
     private final Random random;
     private boolean isMove = true;
 
 
-    public Soldier(int origin, int bound){
+    public Soldier(short origin, short bound){
         this.random = new Random();
 
-        this.x = random.nextInt(origin , bound);
-        this.y = Window.getWINDOW_HEIGHT()-155;
+        this.x = (short) random.nextInt(origin , bound);
+        this.y = (short) (Window.getWINDOW_HEIGHT()-155);
 
         try{
             this.soldier = ImageIO.read(new File("src/main/resources/soldier-min.png"));
@@ -49,7 +49,7 @@ public class Soldier {
             this.y -= dy;
     }
 
-    public void setX(float x) {
+    public void setX(short x) {
         this.x = x;
     }
 
@@ -69,9 +69,9 @@ public class Soldier {
         isMove = move;
     }
 
-    public void dead(int origin, int bound){
-        this.x = random.nextInt(origin , bound);
-        this.y = Window.getWINDOW_HEIGHT()-155;
+    public void dead(short origin, short bound){
+        this.x = (short) random.nextInt(origin , bound);
+        this.y = (short) (Window.getWINDOW_HEIGHT()-155);
     }
 
     public Rectangle catchTheSoldier() {
