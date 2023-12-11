@@ -56,6 +56,10 @@ public class OptionsScreen extends JPanel {
         this.background.paintIcon(null,graphics,this.xOfBackground, this.yOfBackground);
     }
 
+    public void showWindow (){
+        this.setVisible(true);
+    }
+
     public JButton getGameScene() {
         return gameScene;
     }

@@ -375,5 +375,9 @@ public class GameScene extends JPanel implements KeyListener {
 
     }
 
+    public void showWindow (){
+        this.setVisible(true);
+    }
+
 }
 

@@ -8,6 +8,7 @@ public class Window extends JFrame {
 
     private final OpeningScreen openingScreen;
     private final OptionsScreen optionsScreen;
+    private final InstructionsScreen instructionsScreen;
     private final GameScene gameScene;
     private final ClickSound clickSound;
     private final LobbyBackgroundSound lobbyBackgroundSound;
@@ -38,6 +39,9 @@ public class Window extends JFrame {
         this.openingScreen = new OpeningScreen();
         this.add(openingScreen);
 
+        this.instructionsScreen = new InstructionsScreen();
+        this.add(instructionsScreen);
+
 
         this.optionsScreen = new OptionsScreen();
         this.add(optionsScreen);
@@ -52,7 +56,7 @@ public class Window extends JFrame {
         this.openingScreen.getEnter().addActionListener(e -> {
             this.clickSound.playClickAudio();
             this.openingScreen.setVisible(false);
-            this.optionsScreen.setVisible(true);
+            this.optionsScreen.showWindow();
         });
 
 
@@ -61,7 +65,7 @@ public class Window extends JFrame {
             this.sceneBackgroundSound.playWarSound();
             this.clickSound.playClickAudio();
             this.optionsScreen.setVisible(false);
-            this.gameScene.setVisible(true);
+            this.gameScene.showWindow();
             this.gameScene.mainGameLoop();
             this.gameScene.setFocusable(true);
             this.gameScene.requestFocus();
@@ -78,6 +82,7 @@ public class Window extends JFrame {
         this.optionsScreen.getInstructions().addActionListener(e -> {
             this.clickSound.playClickAudio();
             this.optionsScreen.setVisible(false);
+            this.instructionsScreen.showWindow();
         });
 
 
