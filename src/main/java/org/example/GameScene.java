@@ -25,13 +25,13 @@ public class GameScene extends JPanel implements KeyListener {
 
 
     private final OptionsScreen optionsScreen;
-    private final ImageIcon background1 = new ImageIcon("src/main/resources/GameBackground.png");
-    private final ImageIcon background2 = new ImageIcon("src/main/resources/OppositeBackground1.png");
+    private final ImageIcon background1 = new ImageIcon(getClass().getResource("/GameBackground.png"));
+    private final ImageIcon background2 = new ImageIcon(getClass().getResource("/OppositeBackground1.png"));
 
-    private int xOfBackground1 = 0;
-    private int xOfBackground2 = ((Window.getWINDOW_WIDTH())*2);
-    private final int yOfBackground1 = -35;
-    private final int yOfBackground2 = -35;
+    private float xOfBackground1 = 0;
+    private float xOfBackground2 =((Window.getWINDOW_WIDTH())*2);
+    private final byte yOfBackground1 = -35;
+    private final byte yOfBackground2 = -35;
     private boolean isFire = false;
     private boolean terroristHasCollision = false;
     private boolean terroristPassLimit = false;
@@ -39,20 +39,20 @@ public class GameScene extends JPanel implements KeyListener {
     private boolean soldier1PassLimit = false;
     private boolean soldier2PassLimit = false;
 
-    private int indexTerrorist = 0;
-    private int indexSoldier = 0;
-    private int counterOfSurvivors = 0;
-    private int counterOfHits = 0;
-    private int counterOfMisses = 0;
-    private int easy = 9;
-    private int medium = 7;
-    private int hard = 6;
-    private int difficultLevel = easy;
+    private byte indexTerrorist = 0;
+    private byte indexSoldier = 0;
+    private short counterOfSurvivors = 0;
+    private short counterOfHits = 0;
+    private byte counterOfMisses = 0;
+    private final byte easy = 1;
+    private final byte medium = 1;
+    private final byte hard = 1;
+    private byte difficultLevel = easy;
 
-    private JLabel labelHits;
-    private JLabel labelSurvivors;
+    private final JLabel labelHits;
+    private final JLabel labelSurvivors;
 
-    private FireSound fireSound;
+    private final FireSound fireSound;
 
 
 
@@ -110,8 +110,8 @@ public class GameScene extends JPanel implements KeyListener {
     public void paintComponent(Graphics graphics){
         super.paintComponent(graphics);
 
-        this.background1.paintIcon(null,graphics,this.xOfBackground1, this.yOfBackground1);
-        this.background2.paintIcon(null,graphics,this.xOfBackground2, this.yOfBackground2);
+        this.background1.paintIcon(null,graphics, (int) this.xOfBackground1, this.yOfBackground1);
+        this.background2.paintIcon(null,graphics, (int) this.xOfBackground2, this.yOfBackground2);
         this.helicopter.paintHelicopter(graphics);
 
         this.terrorists.get(0).paintTerrorist(graphics);
@@ -168,7 +168,7 @@ public class GameScene extends JPanel implements KeyListener {
 
                 this.checkCollision();
                 if (terroristHasCollision || soldierHasCollision || this.rocket.getX() > Window.getWINDOW_WIDTH()){
-                    this.rocket.setX(350);
+                    this.rocket.setX((short) 350);
                     isFire = false;
                 }
                 if (soldierHasCollision){
@@ -187,7 +187,6 @@ public class GameScene extends JPanel implements KeyListener {
                 if (terroristPassLimit){
                     terrorists.get(indexTerrorist).dead(Window.getWINDOW_WIDTH()+250 , Window.getWINDOW_WIDTH()*5);
                     this.counterOfMisses++;
-                    System.out.println(counterOfMisses);
                     this.terroristPassLimit = false;
                 }
 

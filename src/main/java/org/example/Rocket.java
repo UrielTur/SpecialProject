@@ -7,10 +7,10 @@ import java.io.File;
 
 public class Rocket {
 
-    private int x;
-    private final int y;
-    private int width = 50;
-    private int height = 15;
+    private short x;
+    private final short y;
+    private final byte width = 50;
+    private final byte height = 12;
 
     private BufferedImage rocket;
 
@@ -23,7 +23,7 @@ public class Rocket {
 
 
         try{
-            this.rocket = ImageIO.read(new File("src/main/resources/Rocket.png"));
+            this.rocket = ImageIO.read(new File(getClass().getResource("/Rocket.png").toURI()));
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -36,8 +36,8 @@ public class Rocket {
 
 
     public void paintRocket(Graphics graphics) {
-        this.width = 50;
-        this.height = 12;
+//        this.width = 50;
+//        this.height = 12;
         Image scaledImage = this.rocket.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage, this.x, this.y, null);
     }
@@ -53,15 +53,12 @@ public class Rocket {
     }
 
 
-    public void setX(int x) {
+    public void setX(short x) {
         this.x = x;
     }
 
-    public int getX() {
+    public short getX() {
         return x;
     }
 
-    public int getWidth() {
-        return width;
-    }
 }

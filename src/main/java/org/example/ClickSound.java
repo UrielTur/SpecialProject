@@ -16,7 +16,7 @@ public class ClickSound {
 
     public void playClickAudio() {
         try {
-            audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/resources/clickSound.wav").getAbsoluteFile());
+            audioInputStream = AudioSystem.getAudioInputStream(new File(getClass().getResource("/clickSound.wav").toURI()).getAbsoluteFile());
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
 
@@ -29,8 +29,5 @@ public class ClickSound {
 
     }
 
-    public void setPlay(boolean play) {
-        isPlay = play;
-    }
 }
 

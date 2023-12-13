@@ -11,16 +11,16 @@ import java.io.IOException;
 public class Helicopter {
 
     private final BufferedImage helicopter;
-    private final int x = 270;
-    private final int y = 150;
-    private final int width = 500;
-    private final int height = 500;
+    private final short x = 270;
+    private final short y = 150;
+    private final short width = 500;
+    private final short height = 500;
 
 
     public Helicopter() {
         try {
-            this.helicopter = ImageIO.read(new File("src/main/resources/Helicopter.png"));
-        } catch (IOException e) {
+            this.helicopter = ImageIO.read(new File(getClass().getResource("/Helicopter.png").toURI()));
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
 

@@ -15,7 +15,7 @@ public class SceneBackgroundSound {
 
         public void playWarSound() {
             try {
-                audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/resources/WarBackgroundSound.wav").getAbsoluteFile());
+                audioInputStream = AudioSystem.getAudioInputStream(new File(getClass().getResource("/WarBackgroundSound.wav").toURI()).getAbsoluteFile());
                 clip = AudioSystem.getClip();
                 clip.open(audioInputStream);
 

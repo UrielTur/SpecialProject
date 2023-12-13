@@ -1,7 +1,6 @@
 package org.example;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -9,17 +8,17 @@ import java.awt.event.KeyListener;
 public class OpeningScreen extends JPanel{
     private JLabel header;
     private JButton enter;
-    private final int xHeader = 305;
-    private final int yHeader = 150;
-    private final int widthHeader = 550;
-    private final int heightHeader = 70;
-    private final int xEnter = 460;
-    private final int yEnter = 510;
-    private final int widthEnter = 120;
-    private final int heightEnter = 80;
-    private final ImageIcon background = new ImageIcon("src/main/resources/OpeningScreen background.jpeg");
-    private final int xOfBackground = 0;
-    private final int yOfBackground = 0;
+    private final short xHeader = 305;
+    private final short yHeader = 150;
+    private final short widthHeader = 550;
+    private final byte heightHeader = 70;
+    private final short xEnter = 460;
+    private final short yEnter = 510;
+    private final byte widthEnter = 120;
+    private final byte heightEnter = 80;
+    private final ImageIcon background = new ImageIcon(getClass().getResource("/OpeningScreen background.jpeg"));
+    private final byte xOfBackground = 0;
+    private final byte yOfBackground = 0;
 
 
     public OpeningScreen(){

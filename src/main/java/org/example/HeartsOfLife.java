@@ -24,7 +24,7 @@ public class HeartsOfLife {
     public HeartsOfLife(){
 
         try{
-            this.heart1 = ImageIO.read(new File("src/main/resources/heartOflLife.png"));
+            this.heart1 = ImageIO.read(new File(getClass().getResource("/heartOflLife.png").toURI()));
         }catch (Exception e){
             e.printStackTrace();
         }

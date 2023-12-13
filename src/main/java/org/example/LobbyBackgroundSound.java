@@ -14,7 +14,7 @@ public class LobbyBackgroundSound {
 
     public void playWarSound() {
         try {
-            audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/resources/Lobby_audio.wav").getAbsoluteFile());
+            audioInputStream = AudioSystem.getAudioInputStream(new File(getClass().getResource("/Lobby_audio.wav").toURI()).getAbsoluteFile());
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
 
@@ -26,10 +26,6 @@ public class LobbyBackgroundSound {
             ex.printStackTrace();
         }
 
-    }
-
-    public void setPlay(boolean play) {
-        isPlay = play;
     }
 
     public void stopPlay() {

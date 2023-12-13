@@ -25,7 +25,7 @@ public class Soldier {
         this.y = (short) (Window.getWINDOW_HEIGHT()-155);
 
         try{
-            this.soldier = ImageIO.read(new File("src/main/resources/soldier-min.png"));
+            this.soldier = ImageIO.read(new File(getClass().getResource("/soldier-min.png").toURI()));
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -39,30 +39,22 @@ public class Soldier {
         graphics.drawImage(scaledImage, (int) this.x, (int) this.y, null);
     }
 
-    public void move(int dx){
+    public void move(float dx){
         if (this.x >= (Window.getWINDOW_WIDTH()/2) - 32 && this.isMove) {
             this.x -= dx;
         }
 
     }
-    public void moveUp(int dy){
+    public void moveUp(byte dy){
             this.y -= dy;
     }
 
-    public void setX(short x) {
-        this.x = x;
-    }
-
-    public float getX() {
+    public short getX() {
         return x;
     }
 
-    public float getY() {
+    public short getY() {
         return y;
-    }
-
-    public boolean isMove() {
-        return isMove;
     }
 
     public void setMove(boolean move) {
@@ -75,7 +67,7 @@ public class Soldier {
     }
 
     public Rectangle catchTheSoldier() {
-        return new Rectangle ((int) this.x, (int) this.y, this.width, this.height);
+        return new Rectangle (this.x, this.y, this.width, this.height);
     }
 
 }

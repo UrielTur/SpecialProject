@@ -8,14 +8,14 @@ import java.io.File;
 public class Hits {
     private BufferedImage hitsIcon;
 
-    private final int x = 10;
-    private final int y = 10;
-    private final int width = 40;
-    private final int height = 40;
+    private final byte x = 10;
+    private final byte y = 10;
+    private final byte width = 40;
+    private final byte height = 40;
 
     public Hits() {
         try {
-            this.hitsIcon = ImageIO.read(new File("src/main/resources/Hits.png"));
+            this.hitsIcon = ImageIO.read(new File(getClass().getResource("/Hits.png").toURI()));
         } catch (Exception e) {
             e.printStackTrace();
         }

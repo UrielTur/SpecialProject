@@ -16,7 +16,7 @@ public class FireSound {
 
     public void playFireSound() {
         try {
-            audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/resources/fire-sound.wav").getAbsoluteFile());
+            audioInputStream = AudioSystem.getAudioInputStream(new File(getClass().getResource("/fire-sound.wav").toURI()).getAbsoluteFile());
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
 

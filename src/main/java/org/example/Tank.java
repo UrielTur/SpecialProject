@@ -8,18 +8,17 @@ import java.io.File;
 public class Tank {
 
     private BufferedImage tank;
-    private int x;
-    private final int width = 330;
-    private final int height = 340;
-    private final int y = Window.getWINDOW_HEIGHT()-285 ;
-
+    private byte x;
+    private final short width = 330;
+    private final short height = 340;
+    private final short y = (short) (Window.getWINDOW_HEIGHT()-285);
 
 
     public Tank(){
 
 
         try{
-            this.tank = ImageIO.read(new File("src/main/resources/Tank.png"));
+            this.tank = ImageIO.read(new File(getClass().getResource("/Tank.png").toURI()));
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -33,11 +32,8 @@ public class Tank {
         graphics.drawImage(scaledImage, this.x, this.y, null);
     }
 
-    public int getWidth() {
-        return width;
-    }
 
-    public int getX() {
+    public byte getX() {
         return x;
     }
 

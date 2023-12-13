@@ -11,8 +11,8 @@ public class OptionsScreen extends JPanel {
     private JButton garage;
     private JButton exitFromGame;
     private final ImageIcon background;
-    private final int xOfBackground = 0;
-    private final int yOfBackground = 0;
+    private final byte xOfBackground = 0;
+    private final byte yOfBackground = 0;
 
 
 
@@ -46,7 +46,7 @@ public class OptionsScreen extends JPanel {
         });
         this.add(exitFromGame);
 
-        this.background = new ImageIcon("src/main/resources/TankBackground.png");
+        this.background = new ImageIcon(getClass().getResource("/TankBackground.png"));
 
     }
 

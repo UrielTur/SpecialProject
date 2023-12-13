@@ -3,8 +3,8 @@ package org.example;
 import javax.swing.*;
 
 public class Window extends JFrame {
-    private static final int WINDOW_WIDTH = 1050;
-    private static final int WINDOW_HEIGHT = 700;
+    private static final short WINDOW_WIDTH = 1050;
+    private static final short WINDOW_HEIGHT = 700;
 
     private final OpeningScreen openingScreen;
     private final OptionsScreen optionsScreen;
@@ -85,6 +85,13 @@ public class Window extends JFrame {
             this.instructionsScreen.showWindow();
         });
 
+        this.instructionsScreen.getBackButton().addActionListener(e -> {
+            this.clickSound.playClickAudio();
+            this.instructionsScreen.setVisible(false);
+            this.optionsScreen.setVisible(true);
+
+        });
+
 
     }
 
@@ -94,11 +101,11 @@ public class Window extends JFrame {
     }
 
 
-    public static int getWINDOW_WIDTH() {
+    public static short getWINDOW_WIDTH() {
         return WINDOW_WIDTH;
     }
 
-    public static int getWINDOW_HEIGHT() {
+    public static short getWINDOW_HEIGHT() {
         return WINDOW_HEIGHT;
     }
 
