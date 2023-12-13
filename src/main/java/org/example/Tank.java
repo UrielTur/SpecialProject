@@ -16,7 +16,6 @@ public class Tank {
 
     public Tank(){
 
-
         try{
             this.tank = ImageIO.read(new File(getClass().getResource("/Tank.png").toURI()));
         }catch (Exception e){
@@ -26,8 +25,6 @@ public class Tank {
 
 
     public void paintTank(Graphics graphics) {
-//        this.width = 330;
-//        this.height = 340;
         Image scaledImage = this.tank.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         graphics.drawImage(scaledImage, this.x, this.y, null);
     }

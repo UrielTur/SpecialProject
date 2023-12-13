@@ -50,8 +50,8 @@ public class Terrorist {
         return x;
     }
 
-    public void dead(int origin, int bound){
-        this.x = random.nextInt(origin , bound);
+    public void dead(short origin, short bound){
+        this.x = (short) random.nextInt(origin , bound);
     }
 
     public Rectangle catchTheTerrorist() {
@@ -62,7 +62,7 @@ public class Terrorist {
     }
 
     public Rectangle distanceRectangleDouble() {
-        return new Rectangle ((int) this.x - 50, this.y , this.width + 50, this.height);
+        return new Rectangle (this.x - 50, this.y , this.width + 50, this.height);
     }
 }
 

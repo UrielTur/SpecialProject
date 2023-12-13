@@ -10,7 +10,6 @@ public class ClickSound {
 
     private AudioInputStream audioInputStream;
     private Clip clip;
-    private boolean isPlay = false;
 
 
 

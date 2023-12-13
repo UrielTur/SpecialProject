@@ -9,7 +9,6 @@ public class SceneBackgroundSound {
 
         private AudioInputStream audioInputStream;
         private Clip clip;
-        private boolean isPlay = false;
 
 
 
@@ -28,10 +27,6 @@ public class SceneBackgroundSound {
                 ex.printStackTrace();
             }
 
-        }
-
-        public void setPlay(boolean play) {
-            isPlay = play;
         }
 
         public void stopPlay() {

@@ -36,7 +36,7 @@ public class Soldier {
 
     public void paintSoldier(Graphics graphics) {
         Image scaledImage = this.soldier.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        graphics.drawImage(scaledImage, (int) this.x, (int) this.y, null);
+        graphics.drawImage(scaledImage, this.x, this.y, null);
     }
 
     public void move(float dx){

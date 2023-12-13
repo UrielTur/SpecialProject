@@ -86,13 +86,11 @@ public class GameScene extends JPanel implements KeyListener {
         this.labelHits = new JLabel(String.valueOf(counterOfHits));
         this.labelHits.setBounds(65,10,200,40);
         this.labelHits.setFont(new Font("Arial" , Font.BOLD, 30));
-//        this.labelHits.setForeground(new Color(Color.black, true));
         this.add(labelHits);
 
         this.labelSurvivors = new JLabel("Survivors " + String.valueOf(counterOfSurvivors));
         this.labelSurvivors.setBounds(10,60,200,40);
         this.labelSurvivors.setFont(new Font("Arial" , Font.BOLD, 30));
-//        this.labelSurvivors.setForeground(new Color(0xE011F909, true));
         this.add(labelSurvivors);
 
 
@@ -114,15 +112,22 @@ public class GameScene extends JPanel implements KeyListener {
         this.background2.paintIcon(null,graphics, (int) this.xOfBackground2, this.yOfBackground2);
         this.helicopter.paintHelicopter(graphics);
 
-        this.terrorists.get(0).paintTerrorist(graphics);
-        this.terrorists.get(1).paintTerrorist(graphics);
-        this.terrorists.get(2).paintTerrorist(graphics);
-        this.terrorists.get(3).paintTerrorist(graphics);
-        this.terrorists.get(4).paintTerrorist(graphics);
-        
-        this.soldiers.get(0).paintSoldier(graphics);
-        this.soldiers.get(1).paintSoldier(graphics);
+        for (int i = 0; i < 5; i++) {
+            this.terrorists.get(i).paintTerrorist(graphics);
 
+            if (i < 2){
+                this.soldiers.get(i).paintSoldier(graphics);
+            }
+        }
+
+//        this.terrorists.get(0).paintTerrorist(graphics);
+//        this.terrorists.get(1).paintTerrorist(graphics);
+//        this.terrorists.get(2).paintTerrorist(graphics);
+//        this.terrorists.get(3).paintTerrorist(graphics);
+//        this.terrorists.get(4).paintTerrorist(graphics);
+//
+//        this.soldiers.get(0).paintSoldier(graphics);
+//        this.soldiers.get(1).paintSoldier(graphics);
 
         this.rocket.paintRocket(graphics);
         this.tank.paintTank(graphics);
@@ -142,22 +147,22 @@ public class GameScene extends JPanel implements KeyListener {
                 safetyDistance();
 
                 if (this.xOfBackground1 <= -(Window.getWINDOW_WIDTH()*2)){
-                    this.xOfBackground1 = (Window.getWINDOW_WIDTH()*2);
+                    this.xOfBackground1 = (short) (Window.getWINDOW_WIDTH()*2);
                 } else if (this.xOfBackground2 <= -(Window.getWINDOW_WIDTH()*2)){
-                    this.xOfBackground2 = (Window.getWINDOW_WIDTH()*2);
+                    this.xOfBackground2 = (short) (Window.getWINDOW_WIDTH()*2);
                 }
 
                 if (this.tank.getX() > 66){
 
-                    this.terrorists.get(0).move(2);
-                    this.terrorists.get(1).move(2);
-                    this.terrorists.get(2).move(2);
-                    this.terrorists.get(3).move(2);
-                    this.terrorists.get(4).move(2);
-                    
-                    this.soldiers.get(0).move(2);
-                    this.soldiers.get(1).move(2);
-
+//                    this.terrorists.get(0).move((float) 0.0001);
+//                    this.terrorists.get(1).move((float) 0.0001);
+//                    this.terrorists.get(2).move((float) 0.0001);
+//                    this.terrorists.get(3).move((float) 0.0001);
+//                    this.terrorists.get(4).move((float) 0.0001);
+//
+//                    this.soldiers.get(0).move((float) 0.0001);
+//                    this.soldiers.get(1).move((float) 0.0001);
+                    movePlayers();
                     moveBackground();
                 }
 
@@ -178,14 +183,14 @@ public class GameScene extends JPanel implements KeyListener {
                     soldierHasCollision = false;
                 }
                 if (terroristHasCollision){
-                    terrorists.get(indexTerrorist).dead(Window.getWINDOW_WIDTH()+250 , Window.getWINDOW_WIDTH()*5);
+                    terrorists.get(indexTerrorist).dead((short) (Window.getWINDOW_WIDTH()+250), (short) (Window.getWINDOW_WIDTH()*5));
                     this.counterOfHits++;
                     terroristHasCollision = false;
                 }
 
                 this.checkPassLimit();
                 if (terroristPassLimit){
-                    terrorists.get(indexTerrorist).dead(Window.getWINDOW_WIDTH()+250 , Window.getWINDOW_WIDTH()*5);
+                    terrorists.get(indexTerrorist).dead((short) (Window.getWINDOW_WIDTH()+250), (short) (Window.getWINDOW_WIDTH()*5));
                     this.counterOfMisses++;
                     this.terroristPassLimit = false;
                 }
@@ -193,7 +198,7 @@ public class GameScene extends JPanel implements KeyListener {
 
 
                 if (soldier1PassLimit) {
-                    soldiers.get(0).moveUp(2);
+                    soldiers.get(0).moveUp((byte) 2);
                     if (soldiers.get(0).getY() <= Window.getWINDOW_HEIGHT()/3) {
                         soldiers.get(0).dead((short) (Window.getWINDOW_WIDTH() + 250), (short) (Window.getWINDOW_WIDTH()*5));
                         this.counterOfSurvivors++;
@@ -201,7 +206,7 @@ public class GameScene extends JPanel implements KeyListener {
                     }
                 }
                 if (soldier2PassLimit) {
-                    soldiers.get(1).moveUp(2);
+                    soldiers.get(1).moveUp((byte) 2);
                     if (soldiers.get(1).getY() <= Window.getWINDOW_HEIGHT()/3) {
                         soldiers.get(1).dead((short) (Window.getWINDOW_WIDTH() + 250), (short) (Window.getWINDOW_WIDTH()*5));
                         this.counterOfSurvivors++;
@@ -238,10 +243,19 @@ public class GameScene extends JPanel implements KeyListener {
 
     }
 
+    public void movePlayers(){
+        this.terrorists.get(0).move((float) 0.000105);
+        this.terrorists.get(1).move((float) 0.000105);
+        this.terrorists.get(2).move((float) 0.000105);
+        this.terrorists.get(3).move((float) 0.000105);
+        this.terrorists.get(4).move((float) 0.000105);
 
+        this.soldiers.get(0).move((float) 0.000105);
+        this.soldiers.get(1).move((float) 0.000105);
+    }
     public void moveBackground() {
-        this.xOfBackground1 -= 1;
-        this.xOfBackground2 -= 1;
+        this.xOfBackground1 -= 0.2;
+        this.xOfBackground2 -= 0.2;
     }
 
 
@@ -280,31 +294,31 @@ public class GameScene extends JPanel implements KeyListener {
 
     public void checkPassLimit(){
 
-        if (terrorist1.getX() <= (Window.getWINDOW_WIDTH()/2)){
+        if (terrorist1.getX() <= (Window.getWINDOW_WIDTH() / 2)){
             indexTerrorist = 0;
             terroristPassLimit = true;
         }
-        if (terrorist2.getX() <= (Window.getWINDOW_WIDTH()/2)){
+        if (terrorist2.getX() <= (Window.getWINDOW_WIDTH() / 2)){
             indexTerrorist = 1;
             terroristPassLimit = true;
         }
-        if (terrorist3.getX() <= (Window.getWINDOW_WIDTH()/2)){
+        if (terrorist3.getX() <= (Window.getWINDOW_WIDTH() / 2)){
             indexTerrorist = 2;
             terroristPassLimit = true;
         }
-        if (terrorist4.getX() <= (Window.getWINDOW_WIDTH()/2)){
+        if (terrorist4.getX() <= (Window.getWINDOW_WIDTH() / 2)){
             indexTerrorist = 3;
             terroristPassLimit = true;
         }
-        if (terrorist5.getX() <= (Window.getWINDOW_WIDTH()/2)){
+        if (terrorist5.getX() <= (Window.getWINDOW_WIDTH() / 2)){
             indexTerrorist = 4;
             terroristPassLimit = true;
         }
 
-        if (soldier1.getX() <= (Window.getWINDOW_WIDTH()/2) - 32){
+        if (soldier1.getX() <= (Window.getWINDOW_WIDTH() / 2) - 32){
             soldier1PassLimit = true;
         }
-        if (soldier2.getX() <= (Window.getWINDOW_WIDTH()/2) - 32){
+        if (soldier2.getX() <= (Window.getWINDOW_WIDTH() / 2) - 32){
             soldier2PassLimit = true;
         }
 
@@ -328,6 +342,7 @@ public class GameScene extends JPanel implements KeyListener {
                 soldier2.setMove(true);
             }
         } else {
+
             if (soldier1.catchTheSoldier().intersects(terrorist1.distanceRectangleDouble()) || soldier1.catchTheSoldier().intersects(terrorist2.distanceRectangleDouble()) || soldier1.catchTheSoldier().intersects(terrorist3.distanceRectangleDouble()) || soldier1.catchTheSoldier().intersects(terrorist4.distanceRectangleDouble()) || soldier1.catchTheSoldier().intersects(terrorist5.distanceRectangleDouble())) {
                 soldier1.setMove(false);
             } else {

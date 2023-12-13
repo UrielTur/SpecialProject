@@ -8,7 +8,6 @@ import java.io.File;
 public class LobbyBackgroundSound {
     private AudioInputStream audioInputStream;
     private Clip clip;
-    private boolean isPlay = false;
 
 
 

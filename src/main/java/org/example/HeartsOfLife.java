@@ -16,10 +16,10 @@ public class HeartsOfLife {
     private boolean showHeart3 = true;
 
 
-    private final int x = Window.getWINDOW_WIDTH() - 170;
-    private final int y = 10;
-    private final int width = 40;
-    private final int height = 40;
+    private final short x = (short) (Window.getWINDOW_WIDTH() - 170);
+    private final byte y = 10;
+    private final byte width = 40;
+    private final byte height = 40;
 
     public HeartsOfLife(){
 
@@ -29,12 +29,12 @@ public class HeartsOfLife {
             e.printStackTrace();
         }
         try{
-            this.heart2 = ImageIO.read(new File("src/main/resources/heartOflLife.png"));
+            this.heart2 = ImageIO.read(new File(getClass().getResource("/heartOflLife.png").toURI()));
         }catch (Exception e){
             e.printStackTrace();
         }
         try{
-            this.heart3 = ImageIO.read(new File("src/main/resources/heartOflLife.png"));
+            this.heart3 = ImageIO.read(new File(getClass().getResource("/heartOflLife.png").toURI()));
         }catch (Exception e){
             e.printStackTrace();
         }

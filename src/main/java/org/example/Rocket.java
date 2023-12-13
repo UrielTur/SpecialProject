@@ -17,7 +17,7 @@ public class Rocket {
 
     public Rocket(){
         this.x = 260;
-        this.y = Window.getWINDOW_HEIGHT()-146;
+        this.y = (short) (Window.getWINDOW_HEIGHT()-146);
 
 
 
