@@ -139,7 +139,7 @@ public class GameScene extends JPanel implements KeyListener {
     }
 
 
-    public synchronized void mainGameLoop(){
+    public void mainGameLoop(){
         new Thread(() -> {
 
             while (counterOfMisses < 3){
@@ -245,13 +245,13 @@ public class GameScene extends JPanel implements KeyListener {
 
     public void movePlayers(){
         this.terrorists.get(0).move((float) 0.000105);
-        this.terrorists.get(1).move((float) 0.000105);
-        this.terrorists.get(2).move((float) 0.000105);
-        this.terrorists.get(3).move((float) 0.000105);
-        this.terrorists.get(4).move((float) 0.000105);
+        this.terrorists.get(1).move((float) 0.0001);
+        this.terrorists.get(2).move((float) 0.000108);
+        this.terrorists.get(3).move((float) 0.000175);
+        this.terrorists.get(4).move((float) 0.000135);
 
-        this.soldiers.get(0).move((float) 0.000105);
-        this.soldiers.get(1).move((float) 0.000105);
+        this.soldiers.get(0).move((float) 0.000175);
+        this.soldiers.get(1).move((float) 0.000175);
     }
     public void moveBackground() {
         this.xOfBackground1 -= 0.2;

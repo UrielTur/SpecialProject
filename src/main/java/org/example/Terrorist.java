@@ -38,15 +38,15 @@ public class Terrorist {
     public void paintTerrorist(Graphics graphics) {
 
         Image scaledImage = this.terrorist.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        graphics.drawImage(scaledImage, this.x, this.y, null);
+        graphics.drawImage(scaledImage, (int) this.x, this.y, null);
     }
 
     public void move(float dx){
-        this.x -= dx;
+        this.x -= (float)dx;
     }
 
 
-    public short getX() {
+    public float getX() {
         return x;
     }
 
@@ -55,14 +55,14 @@ public class Terrorist {
     }
 
     public Rectangle catchTheTerrorist() {
-        return new Rectangle (this.x, this.y , this.width, this.height);
+        return new Rectangle ((int) this.x, this.y , this.width, this.height);
     }
     public Rectangle distanceRectangle() {
-        return new Rectangle (this.x - 45, this.y , this.width + 45, this.height);
+        return new Rectangle ((int) (this.x - 45), this.y , this.width + 45, this.height);
     }
 
     public Rectangle distanceRectangleDouble() {
-        return new Rectangle (this.x - 50, this.y , this.width + 50, this.height);
+        return new Rectangle ((int) (this.x - 50), this.y , this.width + 50, this.height);
     }
 }
 

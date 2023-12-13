@@ -41,7 +41,7 @@ public class Soldier {
 
     public void move(float dx){
         if (this.x >= (Window.getWINDOW_WIDTH()/2) - 32 && this.isMove) {
-            this.x -= dx;
+            this.x -= (float)dx;
         }
 
     }
