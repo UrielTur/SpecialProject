@@ -162,7 +162,7 @@ public class GameScene extends JPanel implements KeyListener {
 //
 //                    this.soldiers.get(0).move((float) 0.0001);
 //                    this.soldiers.get(1).move((float) 0.0001);
-                    movePlayers();
+//                    movePlayers();
                     moveBackground();
                 }
 
@@ -244,14 +244,15 @@ public class GameScene extends JPanel implements KeyListener {
     }
 
     public void movePlayers(){
-        this.terrorists.get(0).move((float) 1.5);
-        this.terrorists.get(1).move((float) 1.5);
-        this.terrorists.get(2).move((float) 1.5);
-        this.terrorists.get(3).move((float) 1.5);
-        this.terrorists.get(4).move((float) 1.5);
+//        this.terrorists.get(0).move((float) 1.5);
+//        this.terrorists.get(1).move((float) 1.5);
+//        this.terrorists.get(2).move((float) 1.5);
+//        this.terrorists.get(3).move((float) 1.5);
+//        this.terrorists.get(4).move((float) 1.5);
 
-        this.soldiers.get(0).move((float) 1.5);
-        this.soldiers.get(1).move((float) 1.5);
+
+//        this.soldiers.get(0).move((float) 1.5);
+//        this.soldiers.get(1).move((float) 1.5);
     }
     public void moveBackground() {
         this.xOfBackground1 -= 1;
