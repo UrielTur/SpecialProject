@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Random;
 
-public class Soldier {
+public class Soldier extends Thread {
 
     private BufferedImage soldier;
 
@@ -32,6 +32,18 @@ public class Soldier {
 
 
     }
+    public void run(){
+        while (true){
+
+            move();
+
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 
 
     public void paintSoldier(Graphics graphics) {
@@ -39,21 +51,21 @@ public class Soldier {
         graphics.drawImage(scaledImage, this.x, this.y, null);
     }
 
-    public void move(float dx){
+    public void move(){
         if (this.x >= (Window.getWINDOW_WIDTH()/2) - 32 && this.isMove) {
-            this.x -= (float)dx;
+            this.x -= 2;
         }
-
     }
+
     public void moveUp(byte dy){
-            this.y -= dy;
+        this.y -= dy;
     }
 
     public short getX() {
         return x;
     }
 
-    public short getY() {
+    public short getY(){
         return y;
     }
 

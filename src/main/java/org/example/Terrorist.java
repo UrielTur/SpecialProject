@@ -6,7 +6,7 @@ import java.util.Random;
 public class Terrorist extends Thread {
 
     private Image terrorist;
-    private short x;
+    private float x;
     private final short y;
     private final byte width = 65;
     private final byte height = 85;
@@ -29,10 +29,10 @@ public class Terrorist extends Thread {
     }
     public void run(){
         while (true){
-            this.x--;
+            this.x -= 1.2;
 
             try {
-                Thread.sleep(7);
+                Thread.sleep(9);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
