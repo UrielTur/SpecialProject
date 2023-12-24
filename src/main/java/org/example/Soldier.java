@@ -32,6 +32,18 @@ public class Soldier extends Thread {
 
 
     }
+    public void run(){
+        while (true){
+
+            move();
+
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 
 
     public void paintSoldier(Graphics graphics) {

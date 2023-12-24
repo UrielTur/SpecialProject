@@ -17,9 +17,9 @@ public class GameScene extends JPanel implements KeyListener {
     private Terrorist terrorist5;
 //    private List<Terrorist> terrorists;
     private Terrorist[] terrorists;
-    private final Soldier soldier1;
-    private final Soldier soldier2;
-    private final List<Soldier> soldiers;
+//    private final Soldier soldier1;
+//    private final Soldier soldier2;
+    private final Soldier[] soldiers;
     private final HeartsOfLife heartsOfLife;
     private final Hits hits;
 
@@ -36,6 +36,7 @@ public class GameScene extends JPanel implements KeyListener {
     private boolean terroristHasCollision = false;
     private boolean terroristPassLimit = false;
     private boolean soldierHasCollision = false;
+    private boolean soldierPassLimit = false;
     private boolean soldier1PassLimit = false;
     private boolean soldier2PassLimit = false;
 
@@ -45,7 +46,7 @@ public class GameScene extends JPanel implements KeyListener {
     private short counterOfHits = 0;
     private byte counterOfMisses = 0;
     private final byte easy = 10;
-    private final byte medium = 5;
+    private final byte medium = 6;
     private final byte hard = 3;
     private byte difficultLevel = easy;
 
@@ -96,11 +97,6 @@ public class GameScene extends JPanel implements KeyListener {
 
 
 
-
-
-
-        this.soldiers = List.of(soldier1, soldier2);
-
         this.labelHits = new JLabel(String.valueOf(counterOfHits));
         this.labelHits.setBounds(65,10,200,40);
         this.labelHits.setFont(new Font("Arial" , Font.BOLD, 30));
@@ -133,10 +129,9 @@ public class GameScene extends JPanel implements KeyListener {
 
         for (int i = 0; i < 5; i++) {
             this.terrorists[i].paintTerrorist(graphics);
-
-//            if (i < 2){
-//                this.soldiers.get(i).paintSoldier(graphics);
-//            }
+            if (i < 2){
+                this.soldiers[i].paintSoldier(graphics);
+            }
         }
 
 //        this.terrorists.get(0).paintTerrorist(graphics);
@@ -186,7 +181,7 @@ public class GameScene extends JPanel implements KeyListener {
                 }
 
                 if (soldierHasCollision){
-                    soldiers.get(indexSoldier).dead((short) (Window.getWINDOW_WIDTH()+250), (short) (Window.getWINDOW_WIDTH()*5));
+                    soldiers[indexSoldier].dead((short) (Window.getWINDOW_WIDTH()+250), (short) (Window.getWINDOW_WIDTH()*5));
                     this.counterOfMisses++;
                     this.soldierHasCollision = false;
                 }
@@ -204,17 +199,17 @@ public class GameScene extends JPanel implements KeyListener {
 
 
                 if (soldier1PassLimit) {
-                    soldiers.get(0).moveUp((byte) 2);
-                    if (soldiers.get(0).getY() <= Window.getWINDOW_HEIGHT()/3) {
-                        soldiers.get(0).dead((short) (Window.getWINDOW_WIDTH() + 250), (short) (Window.getWINDOW_WIDTH()*5));
+                    soldiers[0].moveUp((byte) 2);
+                    if (soldiers[0].getY() <= Window.getWINDOW_HEIGHT()/3) {
+                        soldiers[0].dead((short) (Window.getWINDOW_WIDTH() + 250), (short) (Window.getWINDOW_WIDTH()*5));
                         this.counterOfSurvivors++;
                         this.soldier1PassLimit = false;
                     }
                 }
                 if (soldier2PassLimit) {
-                    soldiers.get(1).moveUp((byte) 2);
-                    if (soldiers.get(1).getY() <= Window.getWINDOW_HEIGHT()/3) {
-                        soldiers.get(1).dead((short) (Window.getWINDOW_WIDTH() + 250), (short) (Window.getWINDOW_WIDTH()*5));
+                    soldiers[1].moveUp((byte) 2);
+                    if (soldiers[1].getY() <= Window.getWINDOW_HEIGHT()/3) {
+                        soldiers[1].dead((short) (Window.getWINDOW_WIDTH() + 250), (short) (Window.getWINDOW_WIDTH()*5));
                         this.counterOfSurvivors++;
                         this.soldier2PassLimit = false;
                     }
@@ -253,16 +248,6 @@ public class GameScene extends JPanel implements KeyListener {
 
     }
 
-//    public void movePlayers(){
-//        this.terrorists.get(0).move((float) 1.5);
-//        this.terrorists.get(1).move((float) 1.5);
-//        this.terrorists.get(2).move((float) 1.5);
-//        this.terrorists.get(3).move((float) 1.5);
-//        this.terrorists.get(4).move((float) 1.5);
-//
-//        this.soldiers.get(0).move((float) 1.5);
-//        this.soldiers.get(1).move((float) 1.5);
-//    }
     public void moveBackground() {
         this.xOfBackground1 -= 1;
         this.xOfBackground2 -= 1;
@@ -276,6 +261,12 @@ public class GameScene extends JPanel implements KeyListener {
                 terroristHasCollision = true;
                 indexTerrorist = (byte) i;
             }
+            if (i < 2) {
+                if (soldiers[i].catchTheSoldier().intersects(this.rocket.calculateRectangle())) {
+                    soldierHasCollision = true;
+                    indexSoldier = (byte) i;
+                }
+            }
         }
     }
 
@@ -287,7 +278,15 @@ public class GameScene extends JPanel implements KeyListener {
                 indexTerrorist = (byte) i;
                 terroristPassLimit = true;
             }
-        }
+            if (i < 2) {
+                if (soldiers[i].getX() <= (Window.getWINDOW_WIDTH() / 2)) {
+                    if (i == 0) {
+                        soldier1PassLimit = true;
+                    } else {
+                        soldier2PassLimit = true;
+                    }
+                }
+            }
 
 
 //        if (terrorist1.getX() <= (Window.getWINDOW_WIDTH() / 2)){
