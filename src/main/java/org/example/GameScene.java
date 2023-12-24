@@ -26,8 +26,8 @@ public class GameScene extends JPanel implements KeyListener {
 
 
     private final OptionsScreen optionsScreen;
-    private final ImageIcon background1 = new ImageIcon(getClass().getResource("/GameBackground.png"));
-    private final ImageIcon background2 = new ImageIcon(getClass().getResource("/OppositeBackground1.png"));
+    private final ImageIcon background1 = new ImageIcon("src/main/resources/GameBackground.png");
+    private final ImageIcon background2 = new ImageIcon("src/main/resources/OppositeBackground1.png");
 
     private float xOfBackground1 = 0;
     private float xOfBackground2 =((Window.getWINDOW_WIDTH())*2);
@@ -59,6 +59,7 @@ public class GameScene extends JPanel implements KeyListener {
 
 
     public GameScene(){
+
         this.setSize(Window.getWINDOW_WIDTH(), Window.getWINDOW_HEIGHT());
         setLayout(null);
 
@@ -108,6 +109,7 @@ public class GameScene extends JPanel implements KeyListener {
 
         this.heartsOfLife = new HeartsOfLife();
         this.hits = new Hits();
+        mainGameLoop();
 
         
         this.setFocusable(true);
@@ -155,7 +157,6 @@ public class GameScene extends JPanel implements KeyListener {
 
             while (counterOfMisses < 3){
                 repaint();
-                safetyDistance();
 
                 if (this.xOfBackground1 <= -(Window.getWINDOW_WIDTH()*2)){
                     this.xOfBackground1 = (short) (Window.getWINDOW_WIDTH()*2);
@@ -183,7 +184,7 @@ public class GameScene extends JPanel implements KeyListener {
                     this.rocket.fire();
                 }
 
-                this.checkCollision();
+
                 if (terroristHasCollision || soldierHasCollision || this.rocket.getX() > Window.getWINDOW_WIDTH()){
                     this.rocket.setX((short) 350);
                     isFire = false;
@@ -248,22 +249,26 @@ public class GameScene extends JPanel implements KeyListener {
                     throw new RuntimeException(e);
                 }
 
+                checkCollision();
+//                safetyDistance();
+                checkPassLimit();
+
             }
 
         }).start();
 
     }
 
-    public void movePlayers(){
-        this.terrorists.get(0).move((float) 1.5);
-        this.terrorists.get(1).move((float) 1.5);
-        this.terrorists.get(2).move((float) 1.5);
-        this.terrorists.get(3).move((float) 1.5);
-        this.terrorists.get(4).move((float) 1.5);
-
-        this.soldiers.get(0).move((float) 1.5);
-        this.soldiers.get(1).move((float) 1.5);
-    }
+//    public void movePlayers(){
+//        this.terrorists.get(0).move((float) 1.5);
+//        this.terrorists.get(1).move((float) 1.5);
+//        this.terrorists.get(2).move((float) 1.5);
+//        this.terrorists.get(3).move((float) 1.5);
+//        this.terrorists.get(4).move((float) 1.5);
+//
+//        this.soldiers.get(0).move((float) 1.5);
+//        this.soldiers.get(1).move((float) 1.5);
+//    }
     public void moveBackground() {
         this.xOfBackground1 -= 1;
         this.xOfBackground2 -= 1;
@@ -333,12 +338,12 @@ public class GameScene extends JPanel implements KeyListener {
             terroristPassLimit = true;
         }
 
-        if (soldier1.getX() <= (Window.getWINDOW_WIDTH() / 2) - 32){
-            soldier1PassLimit = true;
-        }
-        if (soldier2.getX() <= (Window.getWINDOW_WIDTH() / 2) - 32){
-            soldier2PassLimit = true;
-        }
+//        if (soldier1.getX() <= (Window.getWINDOW_WIDTH() / 2) - 32){
+//            soldier1PassLimit = true;
+//        }
+//        if (soldier2.getX() <= (Window.getWINDOW_WIDTH() / 2) - 32){
+//            soldier2PassLimit = true;
+//        }
 
 
     }

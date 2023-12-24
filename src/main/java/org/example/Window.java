@@ -48,8 +48,8 @@ public class Window extends JFrame {
         optionsScreen.setVisible(false);
 
         this.gameScene = new GameScene();
-        this.add(gameScene);
-        gameScene.setVisible(false);
+//        this.add(gameScene);
+//        gameScene.setVisible(false);
 
 
 

@@ -1,14 +1,15 @@
 package org.example;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Random;
 
-public class Terrorist {
+public class Terrorist extends Thread {
 
-    private BufferedImage terrorist;
+    private Image terrorist;
     private short x;
     private final short y;
     private final byte width = 65;
@@ -25,20 +26,28 @@ public class Terrorist {
         this.y = (short) (Window.getWINDOW_HEIGHT()-155);
 
 
-        try{
-            this.terrorist = ImageIO.read(new File(getClass().getResource("/terr-removebg-preview.png").toURI()));
-        }catch (Exception e){
-            e.printStackTrace();
+        this.terrorist = new ImageIcon("src/main/resources/terr-removebg-preview.png").getImage();
+
+
+
+    }
+    public void run(){
+        while (true){
+            this.x--;
+
+            try {
+                Thread.sleep(7);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
-
-
     }
 
 
     public void paintTerrorist(Graphics graphics) {
 
-        Image scaledImage = this.terrorist.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        graphics.drawImage(scaledImage, (int) this.x, this.y, null);
+//        Image scaledImage = this.terrorist.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        graphics.drawImage(terrorist, (short) this.x, (short) this.y,width,height,null);
     }
 
 //    public void move(float dx){
