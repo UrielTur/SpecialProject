@@ -69,7 +69,6 @@ public class Terrorist extends Thread {
     public Rectangle distanceRectangle() {
         return new Rectangle ((int) (this.x - 45), this.y , this.width + 45, this.height);
     }
-
     public Rectangle distanceRectangleDouble() {
         return new Rectangle ((int) (this.x - 50), this.y , this.width + 50, this.height);
     }

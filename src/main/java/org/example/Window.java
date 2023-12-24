@@ -67,12 +67,10 @@ public class Window extends JFrame {
             this.sceneBackgroundSound.playWarSound();
             this.clickSound.playClickAudio();
             this.optionsScreen.setVisible(false);
-            this.gameScene.showWindow();
-            this.gameScene.mainGameLoop();
+//            this.gameScene.mainGameLoop();
             this.gameScene.setFocusable(true);
             this.gameScene.requestFocus();
         });
-
 
 
         this.optionsScreen.getGarage().addActionListener(e -> {

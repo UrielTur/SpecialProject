@@ -71,12 +71,13 @@ public class GameScene extends JPanel implements KeyListener {
         this.helicopter = new Helicopter();
 
 
-        this.terrorist1 = new Terrorist(Window.getWINDOW_WIDTH()+40,Window.getWINDOW_WIDTH()*6);
-        this.terrorist2 = new Terrorist(Window.getWINDOW_WIDTH()+100,Window.getWINDOW_WIDTH()*6);
-        this.terrorist3 = new Terrorist(Window.getWINDOW_WIDTH()+160,Window.getWINDOW_WIDTH()*6);
-        this.terrorist4 = new Terrorist(Window.getWINDOW_WIDTH()+200,Window.getWINDOW_WIDTH()*6);
-        this.terrorist5 = new Terrorist(Window.getWINDOW_WIDTH()+250,Window.getWINDOW_WIDTH()*6);
-        
+//        this.terrorist1 = new Terrorist(Window.getWINDOW_WIDTH()+40,Window.getWINDOW_WIDTH()*6);
+//        this.terrorist2 = new Terrorist(Window.getWINDOW_WIDTH()+100,Window.getWINDOW_WIDTH()*6);
+//        this.terrorist3 = new Terrorist(Window.getWINDOW_WIDTH()+160,Window.getWINDOW_WIDTH()*6);
+//        this.terrorist4 = new Terrorist(Window.getWINDOW_WIDTH()+200,Window.getWINDOW_WIDTH()*6);
+//        this.terrorist5 = new Terrorist(Window.getWINDOW_WIDTH()+250,Window.getWINDOW_WIDTH()*6);
+
+
         this.soldier1 = new Soldier((short) (Window.getWINDOW_WIDTH()+200), (short) (Window.getWINDOW_WIDTH()*6));
         this.soldier2 = new Soldier((short) (Window.getWINDOW_WIDTH()+200), (short) (Window.getWINDOW_WIDTH()*6));
 
@@ -128,9 +129,9 @@ public class GameScene extends JPanel implements KeyListener {
         for (int i = 0; i < 5; i++) {
             this.terrorists[i].paintTerrorist(graphics);
 
-            if (i < 2){
-                this.soldiers.get(i).paintSoldier(graphics);
-            }
+//            if (i < 2){
+//                this.soldiers.get(i).paintSoldier(graphics);
+//            }
         }
 
 //        this.terrorists.get(0).paintTerrorist(graphics);
@@ -196,7 +197,7 @@ public class GameScene extends JPanel implements KeyListener {
                     soldierHasCollision = false;
                 }
                 if (terroristHasCollision){
-                    terrorists.get(indexTerrorist).dead((short) (Window.getWINDOW_WIDTH()+250), (short) (Window.getWINDOW_WIDTH()*5));
+                    terrorists[indexTerrorist].dead((short) (Window.getWINDOW_WIDTH()+250), (short) (Window.getWINDOW_WIDTH()*5));
                     this.counterOfHits++;
                     terroristHasCollision = false;
                 }
@@ -206,7 +207,6 @@ public class GameScene extends JPanel implements KeyListener {
                     this.counterOfMisses++;
                     this.terroristPassLimit = false;
                 }
-
 
 
                 if (soldier1PassLimit) {
@@ -317,26 +317,34 @@ public class GameScene extends JPanel implements KeyListener {
 
     public void checkPassLimit(){
 
-        if (terrorist1.getX() <= (Window.getWINDOW_WIDTH() / 2)){
-            indexTerrorist = 0;
-            terroristPassLimit = true;
+        for (int i = 0; i < terrorists.length; i++) {
+            if (terrorists[i].getX() <= (Window.getWINDOW_WIDTH() / 2)){
+                indexTerrorist =(byte) i;
+                terroristPassLimit = true;
+            }
         }
-        if (terrorist2.getX() <= (Window.getWINDOW_WIDTH() / 2)){
-            indexTerrorist = 1;
-            terroristPassLimit = true;
-        }
-        if (terrorist3.getX() <= (Window.getWINDOW_WIDTH() / 2)){
-            indexTerrorist = 2;
-            terroristPassLimit = true;
-        }
-        if (terrorist4.getX() <= (Window.getWINDOW_WIDTH() / 2)){
-            indexTerrorist = 3;
-            terroristPassLimit = true;
-        }
-        if (terrorist5.getX() <= (Window.getWINDOW_WIDTH() / 2)){
-            indexTerrorist = 4;
-            terroristPassLimit = true;
-        }
+
+
+//        if (terrorist1.getX() <= (Window.getWINDOW_WIDTH() / 2)){
+//            indexTerrorist = 0;
+//            terroristPassLimit = true;
+//        }
+//        if (terrorist2.getX() <= (Window.getWINDOW_WIDTH() / 2)){
+//            indexTerrorist = 1;
+//            terroristPassLimit = true;
+//        }
+//        if (terrorist3.getX() <= (Window.getWINDOW_WIDTH() / 2)){
+//            indexTerrorist = 2;
+//            terroristPassLimit = true;
+//        }
+//        if (terrorist4.getX() <= (Window.getWINDOW_WIDTH() / 2)){
+//            indexTerrorist = 3;
+//            terroristPassLimit = true;
+//        }
+//        if (terrorist5.getX() <= (Window.getWINDOW_WIDTH() / 2)){
+//            indexTerrorist = 4;
+//            terroristPassLimit = true;
+//        }
 
 //        if (soldier1.getX() <= (Window.getWINDOW_WIDTH() / 2) - 32){
 //            soldier1PassLimit = true;
