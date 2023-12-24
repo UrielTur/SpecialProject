@@ -32,7 +32,7 @@ public class Terrorist extends Thread {
             this.x--;
 
             try {
-                Thread.sleep(7);
+                Thread.sleep(9);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
