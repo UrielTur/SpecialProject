@@ -61,6 +61,8 @@ public class Window extends JFrame {
 
 
         this.optionsScreen.getGameScene().addActionListener(e -> {
+            this.add(gameScene);
+            this.gameScene.showWindow();
             this.lobbyBackgroundSound.stopPlay();
             this.sceneBackgroundSound.playWarSound();
             this.clickSound.playClickAudio();

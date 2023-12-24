@@ -41,9 +41,9 @@ public class Terrorist {
         graphics.drawImage(scaledImage, (int) this.x, this.y, null);
     }
 
-    public void move(float dx){
-        this.x -= (float)dx;
-    }
+//    public void move(float dx){
+//        this.x -= (float)dx;
+//    }
 
 
     public float getX() {
