@@ -17,7 +17,7 @@ public class Soldier extends Thread {
     private final byte width = 65;
     private final byte height = 85;
     private final Random random;
-    private boolean isMove = true;
+    private boolean isMove = false;
 
 
     public Soldier(float origin, short bound){
@@ -30,6 +30,7 @@ public class Soldier extends Thread {
 
 
     }
+
     public void run(){
         while (true) {
             if (isMove)
@@ -57,7 +58,7 @@ public class Soldier extends Thread {
         this.y -= dy;
     }
 
-    public short getX() {
+    public float getX() {
         return x;
     }
 
@@ -75,7 +76,7 @@ public class Soldier extends Thread {
     }
 
     public Rectangle catchTheSoldier() {
-        return new Rectangle (this.x, this.y, this.width, this.height);
+        return new Rectangle ((int) this.x, this.y, this.width, this.height);
     }
 
 }

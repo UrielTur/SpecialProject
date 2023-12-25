@@ -8,9 +8,9 @@ import java.io.File;
 
 public class HeartsOfLife {
 
-    private BufferedImage heart1;
-    private BufferedImage heart2;
-    private BufferedImage heart3;
+    private Image heart1;
+    private Image heart2;
+    private Image heart3;
 
     private boolean showHeart1 = true;
     private boolean showHeart2 = true;

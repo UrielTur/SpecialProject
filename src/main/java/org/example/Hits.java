@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 public class Hits {
-    private BufferedImage hitsIcon;
+    private Image hitsIcon;
 
     private final byte x = 10;
     private final byte y = 10;
@@ -19,7 +19,6 @@ public class Hits {
     }
 
     public void paintHitsIcon(Graphics graphics) {
-        Image scaledImage = this.hitsIcon.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        graphics.drawImage(scaledImage, this.x, this.y, null);
+        graphics.drawImage(this.hitsIcon,  this.x,  this.y , width, height,null);
     }
 }

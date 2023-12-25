@@ -24,10 +24,7 @@ public class Rocket {
 
 
     public void paintRocket(Graphics graphics) {
-//        this.width = 50;
-//        this.height = 12;
-        Image scaledImage = this.rocket.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        graphics.drawImage(scaledImage, this.x, this.y, null);
+        graphics.drawImage(this.rocket,  this.x,  this.y , width, height,null);
     }
 
 

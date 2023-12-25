@@ -30,7 +30,9 @@ public class Terrorist extends Thread {
     }
     public void run(){
         while (true){
-            this.x -= 1.2;
+            if(isMove){
+                this.x -= 1.2;
+            }
 
             try {
                 Thread.sleep(8);

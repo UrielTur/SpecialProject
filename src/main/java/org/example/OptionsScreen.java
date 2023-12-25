@@ -46,7 +46,7 @@ public class OptionsScreen extends JPanel {
         });
         this.add(exitFromGame);
 
-        this.background = new ImageIcon(getClass().getResource("/TankBackground.png"));
+        this.background = new ImageIcon("src/main/resources/TankBackground.png").getImage();
 
     }
 

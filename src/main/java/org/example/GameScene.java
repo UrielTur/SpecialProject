@@ -3,7 +3,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.List;
 
 public class GameScene extends JPanel implements KeyListener {
 
@@ -96,7 +95,6 @@ public class GameScene extends JPanel implements KeyListener {
 
 
 
-
             this.labelHits = new JLabel(String.valueOf(counterOfHits));
         this.labelHits.setBounds(65,10,200,40);
         this.labelHits.setFont(new Font("Arial" , Font.BOLD, 30));
@@ -167,6 +165,12 @@ public class GameScene extends JPanel implements KeyListener {
 
                 if (this.tank.getX() > 66){
                     moveBackground();
+                    for (int i = 0; i < terrorists.length; i++) {
+                        terrorists[i].setMove(true);
+                        if(i < 2){
+                            soldiers[i].setMove(true);
+                        }
+                    }
                 }
 
 
@@ -404,6 +408,10 @@ public class GameScene extends JPanel implements KeyListener {
     public void keyReleased(KeyEvent e) {
 
     }
+
+//    public byte getIndexTank() {
+//        return tank.getX();
+//    }
 
     public void showWindow (){
         this.setVisible(true);
