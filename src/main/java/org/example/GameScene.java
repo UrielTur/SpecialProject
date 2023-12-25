@@ -222,7 +222,7 @@ public class GameScene extends JPanel implements KeyListener {
 
                 if (counterOfMisses == 1){
                     heartsOfLife.hideHeart3();
-                } else if (counterOfMisses == 2) {
+                } else if (counterOfMisses >= 2) {
                     heartsOfLife.hideHeart2();
                 } else if (counterOfMisses == 3) {
                     heartsOfLife.hideHeart1();
