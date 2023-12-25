@@ -38,12 +38,11 @@ public class HeartsOfLife {
             graphics.drawImage(this.heart1,  this.x,  this.y , width, height,null);
         }
         if (showHeart2) {
-            Image scaledImage2 = this.heart2.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-            graphics.drawImage(scaledImage2, this.x + 50, this.y, null);
+            graphics.drawImage(this.heart2,  this.x +50,  this.y , width, height,null);
         }
         if (showHeart3) {
-            Image scaledImage3 = this.heart3.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-            graphics.drawImage(scaledImage3, this.x + 100, this.y, null);
+            graphics.drawImage(this.heart3,  this.x + 100,  this.y , width, height,null);
+
         }
     }
 

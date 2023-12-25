@@ -7,7 +7,7 @@ import java.util.List;
 
 public class GameScene extends JPanel implements KeyListener {
 
-    private final Tank tank;
+    private Tank tank;
     private final Helicopter helicopter;
     private final Rocket rocket;
     private Terrorist terrorist1;
@@ -80,7 +80,6 @@ public class GameScene extends JPanel implements KeyListener {
 
 //        this.soldier1 = new Soldier((short) (Window.getWINDOW_WIDTH()+200), (short) (Window.getWINDOW_WIDTH()*6));
 //        this.soldier2 = new Soldier((short) (Window.getWINDOW_WIDTH()+200), (short) (Window.getWINDOW_WIDTH()*6));
-
         this.terrorists = new Terrorist[5];
         this.soldiers = new Soldier[2];
             for (int i = 0; i < terrorists.length; i++) {

@@ -9,7 +9,8 @@ import java.util.Random;
 
 public class Soldier extends Thread {
 
-    private BufferedImage soldier;
+    private Image soldier;
+
 
     private float x;
     private short y;
