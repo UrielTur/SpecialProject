@@ -120,6 +120,7 @@ public class GameScene extends JPanel implements KeyListener {
             }
         }
 
+
 //        this.terrorists.get(0).paintTerrorist(graphics);
 //        this.terrorists.get(1).paintTerrorist(graphics);
 //        this.terrorists.get(2).paintTerrorist(graphics);
