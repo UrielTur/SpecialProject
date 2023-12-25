@@ -1,6 +1,7 @@
 package org.example;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -23,28 +24,18 @@ public class HeartsOfLife {
 
     public HeartsOfLife(){
 
-        try{
-            this.heart1 = ImageIO.read(new File(getClass().getResource("/heartOflLife.png").toURI()));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        try{
-            this.heart2 = ImageIO.read(new File(getClass().getResource("/heartOflLife.png").toURI()));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        try{
-            this.heart3 = ImageIO.read(new File(getClass().getResource("/heartOflLife.png").toURI()));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+            this.heart1 = new ImageIcon("src/main/resources/heartOflLife.png").getImage();
+
+            this.heart2 = new ImageIcon("src/main/resources/heartOflLife.png").getImage();
+
+            this.heart3 = new ImageIcon("src/main/resources/heartOflLife.png").getImage();
+
     }
 
 
     public void paintHearts(Graphics graphics) {
         if (showHeart1) {
-            Image scaledImage1 = this.heart1.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-            graphics.drawImage(scaledImage1, this.x, this.y, null);
+            graphics.drawImage(this.heart1,  this.x,  this.y , width, height,null);
         }
         if (showHeart2) {
             Image scaledImage2 = this.heart2.getScaledInstance(width, height, Image.SCALE_SMOOTH);

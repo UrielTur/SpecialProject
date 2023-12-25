@@ -1,6 +1,7 @@
 package org.example;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -14,11 +15,7 @@ public class Hits {
     private final byte height = 40;
 
     public Hits() {
-        try {
-            this.hitsIcon = ImageIO.read(new File(getClass().getResource("/Hits.png").toURI()));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        this.hitsIcon = new ImageIcon("src/main/resources/Hits.png").getImage();
     }
 
     public void paintHitsIcon(Graphics graphics) {

@@ -1,6 +1,7 @@
 package org.example;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -10,7 +11,7 @@ public class Soldier extends Thread {
 
     private BufferedImage soldier;
 
-    private short x;
+    private float x;
     private short y;
     private final byte width = 65;
     private final byte height = 85;
@@ -18,27 +19,22 @@ public class Soldier extends Thread {
     private boolean isMove = true;
 
 
-    public Soldier(short origin, short bound){
+    public Soldier(float origin, short bound){
         this.random = new Random();
 
-        this.x = (short) random.nextInt(origin , bound);
+        this.x = (float) random.nextInt((int) origin, bound);
         this.y = (short) (Window.getWINDOW_HEIGHT()-155);
 
-        try{
-            this.soldier = ImageIO.read(new File(getClass().getResource("/soldier-min.png").toURI()));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        this.soldier = new ImageIcon( "src/main/resources/soldier-min.png").getImage();
 
 
     }
     public void run(){
-        while (true){
-
-            move();
-
+        while (true) {
+            if (isMove)
+                move();
             try {
-                Thread.sleep(10);
+                Thread.sleep(8);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -47,13 +43,12 @@ public class Soldier extends Thread {
 
 
     public void paintSoldier(Graphics graphics) {
-        Image scaledImage = this.soldier.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        graphics.drawImage(scaledImage, this.x, this.y, null);
+        graphics.drawImage(this.soldier, (int) this.x, this.y,width,height,null);
     }
 
     public void move(){
         if (this.x >= (Window.getWINDOW_WIDTH()/2) - 32 && this.isMove) {
-            this.x -= 2;
+            this.x -= 1.2;
         }
     }
 

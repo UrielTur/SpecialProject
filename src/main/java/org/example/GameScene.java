@@ -82,22 +82,23 @@ public class GameScene extends JPanel implements KeyListener {
 //        this.soldier2 = new Soldier((short) (Window.getWINDOW_WIDTH()+200), (short) (Window.getWINDOW_WIDTH()*6));
 
         this.terrorists = new Terrorist[5];
-        for (int i = 0; i < terrorists.length; i++) {
-            this.terrorists[i] = new Terrorist(Window.getWINDOW_WIDTH()+(40*(i+1)),Window.getWINDOW_WIDTH()*6);
-            this.terrorists[i].start();
-        }
-
         this.soldiers = new Soldier[2];
-        for (int i = 0; i < soldiers.length; i++) {
-            this.soldiers[i] = new Soldier((short) (Window.getWINDOW_WIDTH()+200), (short) (Window.getWINDOW_WIDTH()*6));
-            this.soldiers[i].start();
-        }
+            for (int i = 0; i < terrorists.length; i++) {
+                this.terrorists[i] = new Terrorist(Window.getWINDOW_WIDTH() + (40 * (i + 1)), Window.getWINDOW_WIDTH() * 6);
+                this.terrorists[i].start();
+            }
+
+            for (int i = 0; i < soldiers.length; i++) {
+                this.soldiers[i] = new Soldier((short) (Window.getWINDOW_WIDTH() + 200), (short) (Window.getWINDOW_WIDTH() * 6));
+                this.soldiers[i].start();
+            }
 
 
 
 
 
-        this.labelHits = new JLabel(String.valueOf(counterOfHits));
+
+            this.labelHits = new JLabel(String.valueOf(counterOfHits));
         this.labelHits.setBounds(65,10,200,40);
         this.labelHits.setFont(new Font("Arial" , Font.BOLD, 30));
         this.add(labelHits);

@@ -1,9 +1,7 @@
 package org.example;
-
-import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
+
 
 public class Rocket {
 
@@ -12,23 +10,13 @@ public class Rocket {
     private final byte width = 50;
     private final byte height = 12;
 
-    private BufferedImage rocket;
+    private Image rocket;
 
 
     public Rocket(){
         this.x = 260;
         this.y = (short) (Window.getWINDOW_HEIGHT()-146);
-
-
-
-
-        try{
-            this.rocket = ImageIO.read(new File(getClass().getResource("/Rocket.png").toURI()));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-
+        this.rocket = new ImageIcon("src/main/resources/Rocket.png").getImage();
 
     }
 

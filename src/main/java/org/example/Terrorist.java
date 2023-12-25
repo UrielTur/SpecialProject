@@ -11,6 +11,7 @@ public class Terrorist extends Thread {
     private final byte width = 65;
     private final byte height = 85;
     private final Random random;
+    private boolean isMove = false;
 
 
 
@@ -50,6 +51,9 @@ public class Terrorist extends Thread {
 //        this.x -= (float)dx;
 //    }
 
+    public void setMove(boolean move) {
+        isMove = move;
+    }
 
     public float getX() {
         return x;

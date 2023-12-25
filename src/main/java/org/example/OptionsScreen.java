@@ -10,7 +10,7 @@ public class OptionsScreen extends JPanel {
     private JButton instructions;
     private JButton garage;
     private JButton exitFromGame;
-    private final ImageIcon background;
+    private final Image background;
     private final byte xOfBackground = 0;
     private final byte yOfBackground = 0;
 
@@ -53,7 +53,8 @@ public class OptionsScreen extends JPanel {
 
     public void paintComponent(Graphics graphics){
         super.paintComponent(graphics);
-        this.background.paintIcon(null,graphics,this.xOfBackground, this.yOfBackground);
+        graphics.drawImage(this.background,  this.xOfBackground, this.yOfBackground,background.getWidth(null) ,background.getHeight(null),null);
+
     }
 
     public void showWindow (){
