@@ -157,6 +157,7 @@ public class GameScene extends JPanel implements KeyListener {
             while (counterOfMisses < 3){
                 repaint();
 
+
                 if (this.xOfBackground1 <= -(Window.getWINDOW_WIDTH()*2)){
                     this.xOfBackground1 = (short) (Window.getWINDOW_WIDTH()*2);
                 } else if (this.xOfBackground2 <= -(Window.getWINDOW_WIDTH()*2)){
@@ -260,6 +261,17 @@ public class GameScene extends JPanel implements KeyListener {
     }
 
 
+    public void sleepSpeed(byte speedLevel){
+        for (int i = 0; i < terrorists.length; i++) {
+            terrorists[i].setDifficultLevel(speedLevel);
+            if (i < 2){
+                soldiers[i].setDifficultLevel(speedLevel);
+            }
+        }
+
+    }
+
+
     public void checkCollision() {
 
         for (int i = 0; i < terrorists.length; i++) {
@@ -343,6 +355,15 @@ public class GameScene extends JPanel implements KeyListener {
             }else {
                 if (soldiers[i].catchTheSoldier().intersects(terrorists[0].distanceRectangleDouble()) || soldiers[i].catchTheSoldier().intersects(terrorists[1].distanceRectangleDouble()) || soldiers[i].catchTheSoldier().intersects(terrorists[2].distanceRectangleDouble()) || soldiers[i].catchTheSoldier().intersects(terrorists[3].distanceRectangleDouble()) || soldiers[i].catchTheSoldier().intersects(terrorists[4].distanceRectangleDouble())) {
                     soldiers[i].setMove(false);
+                } else {
+                    soldiers[i].setMove(true);
+                }
+
+            }else if (this.difficultLevel == hard){
+                if (soldiers[i].catchTheSoldier().intersects(terrorists[0].distanceRectangleTriple()) || soldiers[i].catchTheSoldier().intersects(terrorists[1].distanceRectangleTriple()) || soldiers[i].catchTheSoldier().intersects(terrorists[2].distanceRectangleTriple()) || soldiers[i].catchTheSoldier().intersects(terrorists[3].distanceRectangleTriple()) || soldiers[i].catchTheSoldier().intersects(terrorists[4].distanceRectangleTriple())) {
+                    soldiers[i].setMove(false);
+                    System.out.println(i + " hard");
+
                 } else {
                     soldiers[i].setMove(true);
                 }

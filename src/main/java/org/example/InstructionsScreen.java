@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class InstructionsScreen extends JPanel {
-    private final ImageIcon background = new ImageIcon(getClass().getResource("/Instruction background.png"));
+    private final Image background = new ImageIcon("src/main/resources/Instruction background.png").getImage();
     private final byte xOfBackground = 0;
     private final byte yOfBackground = 0;
     private final JButton backButton;
@@ -23,7 +23,9 @@ public class InstructionsScreen extends JPanel {
 
     public void paintComponent(Graphics graphics){
         super.paintComponent(graphics);
-        this.background.paintIcon(null,graphics,this.xOfBackground, this.yOfBackground);
+        graphics.drawImage(this.background,  this.xOfBackground, this.yOfBackground ,background.getWidth(null) ,background.getHeight(null),null);
+
+//        this.background.paintIcon(null,graphics,this.xOfBackground, this.yOfBackground);
     }
 
     public JButton getBackButton() {

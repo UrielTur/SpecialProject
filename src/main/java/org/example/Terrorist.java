@@ -12,6 +12,8 @@ public class Terrorist extends Thread {
     private final byte height = 85;
     private final Random random;
     private boolean isMove = false;
+    private final byte easy = 8;
+    private byte difficultLevel = easy;
 
 
 
@@ -72,7 +74,15 @@ public class Terrorist extends Thread {
         return new Rectangle ((int) (this.x - 45), this.y , this.width + 45, this.height);
     }
     public Rectangle distanceRectangleDouble() {
-        return new Rectangle ((int) (this.x - 50), this.y , this.width + 50, this.height);
+        return new Rectangle ((int) (this.x - 55), this.y , this.width + 55, this.height);
+    }
+
+    public Rectangle distanceRectangleTriple() {
+        return new Rectangle ((int) (this.x - 90), this.y , this.width + 90, this.height);
+    }
+
+    public void setDifficultLevel(byte difficultLevel) {
+        this.difficultLevel = difficultLevel;
     }
 }
 

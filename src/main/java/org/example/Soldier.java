@@ -79,4 +79,7 @@ public class Soldier extends Thread {
         return new Rectangle ((int) this.x, this.y, this.width, this.height);
     }
 
+    public void setDifficultLevel(byte difficultLevel) {
+        this.difficultLevel = difficultLevel;
+    }
 }

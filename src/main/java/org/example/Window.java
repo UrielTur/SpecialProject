@@ -13,6 +13,7 @@ public class Window extends JFrame {
     private final ClickSound clickSound;
     private final LobbyBackgroundSound lobbyBackgroundSound;
     private final SceneBackgroundSound sceneBackgroundSound;
+    private final Garage garage;
 
 
 
@@ -42,6 +43,9 @@ public class Window extends JFrame {
         this.instructionsScreen = new InstructionsScreen();
         this.add(instructionsScreen);
 
+        this.garage = new Garage();
+        this.add(garage);
+
 
         this.optionsScreen = new OptionsScreen();
         this.add(optionsScreen);
@@ -67,7 +71,6 @@ public class Window extends JFrame {
             this.sceneBackgroundSound.playWarSound();
             this.clickSound.playClickAudio();
             this.optionsScreen.setVisible(false);
-//            this.gameScene.mainGameLoop();
             this.gameScene.setFocusable(true);
             this.gameScene.requestFocus();
         });
@@ -88,6 +91,19 @@ public class Window extends JFrame {
         this.instructionsScreen.getBackButton().addActionListener(e -> {
             this.clickSound.playClickAudio();
             this.instructionsScreen.setVisible(false);
+            this.optionsScreen.setVisible(true);
+
+        });
+
+        this.optionsScreen.getGarage().addActionListener(e -> {
+            this.clickSound.playClickAudio();
+            this.optionsScreen.setVisible(false);
+            this.garage.showWindow();
+        });
+
+        this.garage.getBackButton().addActionListener(e -> {
+            this.clickSound.playClickAudio();
+            this.garage.setVisible(false);
             this.optionsScreen.setVisible(true);
 
         });
