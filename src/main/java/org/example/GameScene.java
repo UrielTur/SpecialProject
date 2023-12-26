@@ -46,7 +46,7 @@ public class GameScene extends JPanel implements KeyListener {
     private byte counterOfMisses = 0;
     private final byte easy = 10;
     private final byte medium = 6;
-    private final byte hard = 3;
+    private final byte hard = 4;
     private byte difficultLevel = easy;
 
     private final JLabel labelHits;
@@ -92,10 +92,7 @@ public class GameScene extends JPanel implements KeyListener {
             }
 
 
-
-
-
-            this.labelHits = new JLabel(String.valueOf(counterOfHits));
+        this.labelHits = new JLabel(String.valueOf(counterOfHits));
         this.labelHits.setBounds(65,10,200,40);
         this.labelHits.setFont(new Font("Arial" , Font.BOLD, 30));
         this.add(labelHits);
@@ -166,6 +163,9 @@ public class GameScene extends JPanel implements KeyListener {
 
                 if (this.tank.getX() > 66){
                     moveBackground();
+                    checkCollision();
+                    safetyDistance();
+                    checkPassLimit();
                     for (int i = 0; i < terrorists.length; i++) {
                         terrorists[i].setMove(true);
                         if(i < 2){
@@ -234,8 +234,10 @@ public class GameScene extends JPanel implements KeyListener {
 
                 if (this.counterOfHits > 15 &&  this.counterOfHits <= 30) {
                     this.difficultLevel = medium;
+                    sleepSpeed(medium);
                 } else if (this.counterOfHits > 30) {
                     this.difficultLevel = hard;
+                    sleepSpeed(hard);
                 }
 
 
@@ -244,10 +246,6 @@ public class GameScene extends JPanel implements KeyListener {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-
-                checkCollision();
-                safetyDistance();
-                checkPassLimit();
 
             }
 
@@ -345,16 +343,18 @@ public class GameScene extends JPanel implements KeyListener {
         for (int i = 0; i < soldiers.length; i++) {
 
             if (this.difficultLevel == easy) {
-
                 if (soldiers[i].catchTheSoldier().intersects(terrorists[0].distanceRectangle()) || soldiers[i].catchTheSoldier().intersects(terrorists[1].distanceRectangle()) || soldiers[i].catchTheSoldier().intersects(terrorists[2].distanceRectangle()) || soldiers[i].catchTheSoldier().intersects(terrorists[3].distanceRectangle()) || soldiers[i].catchTheSoldier().intersects(terrorists[4].distanceRectangle())) {
                     soldiers[i].setMove(false);
+                    System.out.println(i + " easy");
                 } else {
                     soldiers[i].setMove(true);
                 }
 
-            }else {
+            }else if (this.difficultLevel == medium){
                 if (soldiers[i].catchTheSoldier().intersects(terrorists[0].distanceRectangleDouble()) || soldiers[i].catchTheSoldier().intersects(terrorists[1].distanceRectangleDouble()) || soldiers[i].catchTheSoldier().intersects(terrorists[2].distanceRectangleDouble()) || soldiers[i].catchTheSoldier().intersects(terrorists[3].distanceRectangleDouble()) || soldiers[i].catchTheSoldier().intersects(terrorists[4].distanceRectangleDouble())) {
                     soldiers[i].setMove(false);
+                    System.out.println(i + " medium");
+
                 } else {
                     soldiers[i].setMove(true);
                 }

@@ -18,6 +18,8 @@ public class Soldier extends Thread {
     private final byte height = 85;
     private final Random random;
     private boolean isMove = false;
+    private final byte easy = 8;
+    private byte difficultLevel = easy;
 
 
     public Soldier(float origin, short bound){
@@ -33,10 +35,16 @@ public class Soldier extends Thread {
 
     public void run(){
         while (true) {
-            if (isMove)
+            if (isMove) {
                 move();
+//                System.out.println("move");
+            }
+//            else {
+//                System.err.println("stop");
+//            }
+
             try {
-                Thread.sleep(8);
+                Thread.sleep(difficultLevel);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

@@ -37,7 +37,7 @@ public class Terrorist extends Thread {
             }
 
             try {
-                Thread.sleep(8);
+                Thread.sleep(difficultLevel);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
