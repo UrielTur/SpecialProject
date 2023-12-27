@@ -39,11 +39,7 @@ public class Soldier extends Thread {
         while (this.stillAlive) {
             if (isMove) {
                 move();
-//                System.out.println("move");
             }
-//            else {
-//                System.err.println("stop");
-//            }
 
             try {
                 Thread.sleep(difficultLevel);

@@ -14,6 +14,7 @@ public class Terrorist extends Thread {
     private boolean isMove = false;
     private final byte easy = 8;
     private byte difficultLevel = easy;
+    private boolean stillAlive = true;
 
 
 
@@ -31,7 +32,7 @@ public class Terrorist extends Thread {
 
     }
     public void run(){
-        while (true){
+        while (this.stillAlive){
             if(isMove){
                 this.x -= 1.2;
             }
@@ -51,9 +52,9 @@ public class Terrorist extends Thread {
         graphics.drawImage(terrorist, (short) this.x, (short) this.y,width,height,null);
     }
 
-//    public void move(float dx){
-//        this.x -= (float)dx;
-//    }
+    public void setStillAlive(boolean stillAlive) {
+        this.stillAlive = stillAlive;
+    }
 
     public void setMove(boolean move) {
         isMove = move;

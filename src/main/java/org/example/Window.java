@@ -1,6 +1,7 @@
 package org.example;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Window extends JFrame {
     private static final short WINDOW_WIDTH = 1050;
@@ -9,6 +10,7 @@ public class Window extends JFrame {
     private final OpeningScreen openingScreen;
     private final OptionsScreen optionsScreen;
     private final InstructionsScreen instructionsScreen;
+    private final GameOverScreen gameOverScreen;
     private final GameScene gameScene;
     private final ClickSound clickSound;
     private final LobbyBackgroundSound lobbyBackgroundSound;

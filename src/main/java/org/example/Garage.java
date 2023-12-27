@@ -32,6 +32,8 @@ public class Garage extends JPanel {
         this.tank1 = new JButton(tankIcon1);
         this.tank1.setBounds(25, 440, 275, 100);// מגדיר מיקום וגודל לכפתור
         this.tank1.setContentAreaFilled(false);
+        this.tank1.setBorder(null);
+
 
         this.add(tank1);
 
@@ -60,10 +62,6 @@ public class Garage extends JPanel {
 
 
 
-        this.tank2 = new JButton();
-        this.tank3 = new JButton();
-
-
         this.backButton = new JButton("Back");
         this.backButton.setBounds(10, 600, 100, 50); // מגדיר מיקום וגודל לכפתור
         this.backButton.setFont(new Font("Arial" , Font.BOLD , 20));
@@ -74,8 +72,9 @@ public class Garage extends JPanel {
         super.paintComponent(graphics);
 //        this.background.paintIcon(null,graphics,this.xOfBackground, this.yOfBackground);
         graphics.drawImage(this.background, this.xOfBackground, this.yOfBackground, Window.getWINDOW_WIDTH(), Window.getWINDOW_HEIGHT(),null);
-
+//        graphics.drawImage(this.tankIcon.getImage(), 150, 350, 150, 145, null);
 //        graphics.drawImage(this.tankIcon,150, 350, tankIcon.getWidth(null), tankIcon.getHeight(null) ,null);
+
 
 
 
