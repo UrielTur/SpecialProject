@@ -106,12 +106,13 @@ public class GameScene extends JPanel implements KeyListener {
 
         this.heartsOfLife = new HeartsOfLife();
         this.hits = new Hits();
-        mainGameLoop();
+//        this.add(this.gameOverScreen);
 
-
+        this.gameOverScreen.setVisible(false);
         this.setFocusable(true);
         this.requestFocus();
         this.addKeyListener(this);
+        mainGameLoop();
     }
 
 
@@ -250,6 +251,7 @@ public class GameScene extends JPanel implements KeyListener {
             }
 
         }).start();
+
 
     }
 

@@ -20,6 +20,8 @@ public class Soldier extends Thread {
     private boolean isMove = false;
     private final byte easy = 8;
     private byte difficultLevel = easy;
+    private boolean stillAlive = true;
+
 
 
     public Soldier(float origin, short bound){
@@ -34,7 +36,7 @@ public class Soldier extends Thread {
     }
 
     public void run(){
-        while (true) {
+        while (this.stillAlive) {
             if (isMove) {
                 move();
 //                System.out.println("move");
@@ -89,5 +91,9 @@ public class Soldier extends Thread {
 
     public void setDifficultLevel(byte difficultLevel) {
         this.difficultLevel = difficultLevel;
+    }
+
+    public void setStillAlive(boolean stillAlive) {
+        this.stillAlive = stillAlive;
     }
 }

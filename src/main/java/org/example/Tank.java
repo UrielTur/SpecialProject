@@ -1,14 +1,14 @@
 package org.example;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
 
 public class Tank {
 
-    private Image tank;
+    private Image tank1;
+    private Image tank2;
+    private Image tank3;
+    private int chosenIndexTank = 1;
     private byte x;
     private final short width = 330;
     private final short height = 340;
@@ -17,13 +17,25 @@ public class Tank {
 
     public Tank(){
 
-        this.tank = new ImageIcon("src/main/resources/Tank.png").getImage();
+        this.tank1 = new ImageIcon("src/main/resources/Tank.png").getImage();
+
+
+        this.tank2 = new ImageIcon("src/main/resources/secondTank-min.png").getImage();
+
+
+        this.tank3 = new ImageIcon("src/main/resources/thirdTank-min.png").getImage();
 
     }
 
 
     public void paintTank(Graphics graphics) {
-        graphics.drawImage(this.tank,  this.x, this.y,width,height,null);
+        if (chosenIndexTank == 1) {
+            graphics.drawImage(this.tank1, this.x, this.y, width, height, null);
+        } else if (chosenIndexTank == 2) {
+            graphics.drawImage(this.tank2, this.x, this.y + 12, width, height - 35, null);
+        } else if (chosenIndexTank == 3) {
+            graphics.drawImage(this.tank3, this.x + 5, this.y + 66, width - 10, height - 170, null);
+        }
 
     }
 
@@ -36,4 +48,19 @@ public class Tank {
         this.x += dx;
     }
 
+    public void setChosenIndexTank(int chosenTank) {
+        this.chosenIndexTank = chosenTank;
+    }
+
+    public Image getTank1() {
+        return tank1;
+    }
+
+    public Image getTank2() {
+        return tank2;
+    }
+
+    public Image getTank3() {
+        return tank3;
+    }
 }

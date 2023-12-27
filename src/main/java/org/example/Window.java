@@ -17,6 +17,7 @@ public class Window extends JFrame {
 
 
 
+
     public Window() {
 
         this.lobbyBackgroundSound = new LobbyBackgroundSound();
@@ -52,8 +53,13 @@ public class Window extends JFrame {
         optionsScreen.setVisible(false);
 
         this.gameScene = new GameScene();
-//        this.add(gameScene);
-//        gameScene.setVisible(false);
+
+
+        this.gameOverScreen = new GameOverScreen();
+
+        this.add(this.gameScene.getGameOverScreen());
+
+
 
 
 
@@ -105,6 +111,50 @@ public class Window extends JFrame {
             this.clickSound.playClickAudio();
             this.garage.setVisible(false);
             this.optionsScreen.setVisible(true);
+        });
+
+        this.garage.getTank1().addActionListener(e -> {
+            this.clickSound.playClickAudio();
+            this.garage.getTank2().setBorder(null);
+            this.garage.getTank3().setBorder(null);
+            this.garage.getTank1().setBorder(BorderFactory.createLineBorder(Color.BLUE, 2));
+            this.gameScene.getTank().setChosenIndexTank(1);
+
+        });
+
+        this.garage.getTank2().addActionListener(e -> {
+            this.clickSound.playClickAudio();
+            this.garage.getTank1().setBorder(null);
+            this.garage.getTank3().setBorder(null);
+            this.garage.getTank2().setBorder(BorderFactory.createLineBorder(Color.BLUE, 2));
+            this.gameScene.getTank().setChosenIndexTank(2);
+
+
+        });
+
+        this.garage.getTank3().addActionListener(e -> {
+            this.clickSound.playClickAudio();
+            this.garage.getTank1().setBorder(null);
+            this.garage.getTank2().setBorder(null);
+            this.garage.getTank3().setBorder(BorderFactory.createLineBorder(Color.BLUE, 2));
+            this.gameScene.getTank().setChosenIndexTank(3);
+
+
+
+        });
+
+        this.gameScene.getGameOverScreen().getPlayAgain().addActionListener(e -> {
+            this.clickSound.playClickAudio();
+
+            this.add(gameScene);
+            this.gameOverScreen.setVisible(false);
+            this.gameScene.showWindow();
+//            this.sceneBackgroundSound.playWarSound();
+            this.gameScene.setFocusable(true);
+            this.gameScene.requestFocus();
+
+
+
 
         });
 
