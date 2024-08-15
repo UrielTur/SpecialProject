@@ -11,7 +11,7 @@ public class Window extends JFrame {
     private final OptionsScreen optionsScreen;
     private final InstructionsScreen instructionsScreen;
     private final GameOverScreen gameOverScreen;
-    private final GameScene gameScene;
+    private GameScene gameScene;
     private final ClickSound clickSound;
     private final LobbyBackgroundSound lobbyBackgroundSound;
     private final SceneBackgroundSound sceneBackgroundSound;
@@ -59,7 +59,7 @@ public class Window extends JFrame {
 
         this.gameOverScreen = new GameOverScreen();
 
-        this.add(this.gameScene.getGameOverScreen());
+        this.add(gameScene.getGameOverScreen());
 
 
 
@@ -81,6 +81,7 @@ public class Window extends JFrame {
             this.optionsScreen.setVisible(false);
             this.gameScene.setFocusable(true);
             this.gameScene.requestFocus();
+
         });
 
 
@@ -146,15 +147,19 @@ public class Window extends JFrame {
         });
 
         this.gameScene.getGameOverScreen().getPlayAgain().addActionListener(e -> {
+            
+            System.out.println("Clicked");
+            sceneBackgroundSound.stopPlay();
             this.clickSound.playClickAudio();
-
-            this.add(gameScene);
             this.gameOverScreen.setVisible(false);
-            this.gameScene.showWindow();
-//            this.sceneBackgroundSound.playWarSound();
+            this.remove(gameScene);
+
+            gameScene = new GameScene();
+            this.add(gameScene);
+            this.sceneBackgroundSound.playWarSound();
+            this.gameScene.setVisible(true);
             this.gameScene.setFocusable(true);
             this.gameScene.requestFocus();
-
 
 
 

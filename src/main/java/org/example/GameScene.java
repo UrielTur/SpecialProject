@@ -251,6 +251,7 @@ public class GameScene extends JPanel implements KeyListener {
             this.gameOverScreen.requestFocus();
             this.gameOverScreen.requestFocusInWindow();
 
+
         }).start();
 
 
