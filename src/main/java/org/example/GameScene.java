@@ -1,32 +1,20 @@
 package org.example;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class GameScene extends JPanel implements KeyListener {
-
     private Tank tank;
     private final Helicopter helicopter;
     private final Rocket rocket;
-    private Terrorist terrorist1;
-    private Terrorist terrorist2;
-    private Terrorist terrorist3;
-    private Terrorist terrorist4;
-    private Terrorist terrorist5;
-    //    private List<Terrorist> terrorists;
     private Terrorist[] terrorists;
-    //    private final Soldier soldier1;
-//    private final Soldier soldier2;
     private final Soldier[] soldiers;
     private final HeartsOfLife heartsOfLife;
     private final Hits hits;
-
-
-    private final OptionsScreen optionsScreen;
     private final ImageIcon background1 = new ImageIcon("src/main/resources/GameBackground.png");
     private final ImageIcon background2 = new ImageIcon("src/main/resources/OppositeBackground1.png");
-
     private float xOfBackground1 = 0;
     private float xOfBackground2 =((Window.getWINDOW_WIDTH())*2);
     private final byte yOfBackground1 = -35;
@@ -38,7 +26,6 @@ public class GameScene extends JPanel implements KeyListener {
     private boolean soldierPassLimit = false;
     private boolean soldier1PassLimit = false;
     private boolean soldier2PassLimit = false;
-
     private byte indexTerrorist = 0;
     private byte indexSoldier = 0;
     private short counterOfSurvivors = 0;
@@ -48,32 +35,22 @@ public class GameScene extends JPanel implements KeyListener {
     private final byte medium = 6;
     private final byte hard = 4;
     private byte difficultLevel = easy;
-
     private final JLabel labelHits;
     private final JLabel labelSurvivors;
-
     private final FireSound fireSound;
-
     private GameOverScreen gameOverScreen;
 
 
-
-
     public GameScene(){
-
         this.setSize(Window.getWINDOW_WIDTH(), Window.getWINDOW_HEIGHT());
         setLayout(null);
 
         this.fireSound = new FireSound();
-
         this.gameOverScreen =new GameOverScreen();
 
-        this.optionsScreen = new OptionsScreen();
         this.tank = new Tank();
         this.rocket = new Rocket();
         this.helicopter = new Helicopter();
-
-
 
         this.terrorists = new Terrorist[5];
         this.soldiers = new Soldier[2];
@@ -87,7 +64,6 @@ public class GameScene extends JPanel implements KeyListener {
                 this.soldiers[i].start();
             }
 
-
         this.labelHits = new JLabel(String.valueOf(counterOfHits));
         this.labelHits.setBounds(65,10,200,40);
         this.labelHits.setFont(new Font("Arial" , Font.BOLD, 30));
@@ -98,16 +74,14 @@ public class GameScene extends JPanel implements KeyListener {
         this.labelSurvivors.setFont(new Font("Arial" , Font.BOLD, 30));
         this.add(labelSurvivors);
 
-
-
         this.heartsOfLife = new HeartsOfLife();
         this.hits = new Hits();
-//        this.add(this.gameOverScreen);
 
         this.gameOverScreen.setVisible(false);
         this.setFocusable(true);
         this.requestFocus();
         this.addKeyListener(this);
+
         mainGameLoop();
     }
 
@@ -137,12 +111,9 @@ public class GameScene extends JPanel implements KeyListener {
 
 
     public void mainGameLoop(){
-        new Thread(() -> {
-
+      new Thread(() -> {
             while (counterOfMisses < 3){
                 repaint();
-
-
                 if (this.xOfBackground1 <= -(Window.getWINDOW_WIDTH()*2)){
                     this.xOfBackground1 = (short) (Window.getWINDOW_WIDTH()*2);
                 } else if (this.xOfBackground2 <= -(Window.getWINDOW_WIDTH()*2)){
@@ -161,18 +132,13 @@ public class GameScene extends JPanel implements KeyListener {
                         }
                     }
                 }
-
-
                 if (isFire){
                     this.rocket.fire();
                 }
-
-
                 if (terroristHasCollision || soldierHasCollision || this.rocket.getX() > Window.getWINDOW_WIDTH()){
                     this.rocket.setX((short) 350);
                     this.isFire = false;
                 }
-
                 if (soldierHasCollision){
                     soldiers[indexSoldier].dead((short) (Window.getWINDOW_WIDTH()+250), (short) (Window.getWINDOW_WIDTH()*5));
                     this.counterOfMisses++;
@@ -183,14 +149,11 @@ public class GameScene extends JPanel implements KeyListener {
                     this.counterOfHits++;
                     this.terroristHasCollision = false;
                 }
-
                 if (terroristPassLimit){
                     terrorists[indexTerrorist].dead((short) (Window.getWINDOW_WIDTH()+250), (short) (Window.getWINDOW_WIDTH()*5));
                     this.counterOfMisses++;
                     this.terroristPassLimit = false;
                 }
-
-
                 if (soldier1PassLimit) {
                     soldiers[0].moveUp((byte) 2);
                     if (soldiers[0].getY() <= Window.getWINDOW_HEIGHT()/3) {
@@ -207,8 +170,6 @@ public class GameScene extends JPanel implements KeyListener {
                         this.soldier2PassLimit = false;
                     }
                 }
-
-
                 if (counterOfMisses >= 1){
                     heartsOfLife.hideHeart3();
                 }
@@ -218,8 +179,6 @@ public class GameScene extends JPanel implements KeyListener {
                 if (counterOfMisses >= 3) {
                     heartsOfLife.hideHeart1();
                 }
-
-
                 if (this.counterOfHits > 15 &&  this.counterOfHits <= 30) {
                     this.difficultLevel = medium;
                     sleepSpeed(medium);
@@ -227,14 +186,11 @@ public class GameScene extends JPanel implements KeyListener {
                     this.difficultLevel = hard;
                     sleepSpeed(hard);
                 }
-
-
                 try {
                     Thread.sleep(this.difficultLevel);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-
             }
 
             for (int i = 0; i < terrorists.length; i++) {
@@ -246,15 +202,9 @@ public class GameScene extends JPanel implements KeyListener {
             }
 
             this.setVisible(false);
-            this.gameOverScreen.setVisible(true);
+            this.gameOverScreen.showWindow();
             this.gameOverScreen.setFocusable(true);
-            this.gameOverScreen.requestFocus();
-            this.gameOverScreen.requestFocusInWindow();
-
-
         }).start();
-
-
     }
 
     public void moveBackground() {
@@ -270,7 +220,6 @@ public class GameScene extends JPanel implements KeyListener {
                 soldiers[i].setDifficultLevel(speedLevel);
             }
         }
-
     }
 
 
@@ -292,7 +241,6 @@ public class GameScene extends JPanel implements KeyListener {
 
 
     public void checkPassLimit() {
-
         for (int i = 0; i < terrorists.length; i++) {
             if (terrorists[i].getX() <= (Window.getWINDOW_WIDTH() / 2)) {
                 indexTerrorist = (byte) i;
@@ -312,9 +260,7 @@ public class GameScene extends JPanel implements KeyListener {
 
 
     public void safetyDistance(){
-
         for (int i = 0; i < soldiers.length; i++) {
-
             if (this.difficultLevel == easy) {
                 if (soldiers[i].catchTheSoldier().intersects(terrorists[0].distanceRectangle()) || soldiers[i].catchTheSoldier().intersects(terrorists[1].distanceRectangle()) || soldiers[i].catchTheSoldier().intersects(terrorists[2].distanceRectangle()) || soldiers[i].catchTheSoldier().intersects(terrorists[3].distanceRectangle()) || soldiers[i].catchTheSoldier().intersects(terrorists[4].distanceRectangle())) {
                     soldiers[i].setMove(false);
@@ -322,38 +268,27 @@ public class GameScene extends JPanel implements KeyListener {
                 } else {
                     soldiers[i].setMove(true);
                 }
-
             }else if (this.difficultLevel == medium){
                 if (soldiers[i].catchTheSoldier().intersects(terrorists[0].distanceRectangleDouble()) || soldiers[i].catchTheSoldier().intersects(terrorists[1].distanceRectangleDouble()) || soldiers[i].catchTheSoldier().intersects(terrorists[2].distanceRectangleDouble()) || soldiers[i].catchTheSoldier().intersects(terrorists[3].distanceRectangleDouble()) || soldiers[i].catchTheSoldier().intersects(terrorists[4].distanceRectangleDouble())) {
                     soldiers[i].setMove(false);
                     System.out.println(i + " medium");
-
                 } else {
                     soldiers[i].setMove(true);
                 }
-
             }else if (this.difficultLevel == hard){
                 if (soldiers[i].catchTheSoldier().intersects(terrorists[0].distanceRectangleTriple()) || soldiers[i].catchTheSoldier().intersects(terrorists[1].distanceRectangleTriple()) || soldiers[i].catchTheSoldier().intersects(terrorists[2].distanceRectangleTriple()) || soldiers[i].catchTheSoldier().intersects(terrorists[3].distanceRectangleTriple()) || soldiers[i].catchTheSoldier().intersects(terrorists[4].distanceRectangleTriple())) {
                     soldiers[i].setMove(false);
                     System.out.println(i + " hard");
-
                 } else {
                     soldiers[i].setMove(true);
                 }
-
             }
-
         }
-
     }
-
-
-
 
 
     @Override
     public void keyTyped(KeyEvent e) {
-
     }
 
     @Override
@@ -375,7 +310,6 @@ public class GameScene extends JPanel implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-
     }
 
     public GameOverScreen getGameOverScreen() {
@@ -385,13 +319,23 @@ public class GameScene extends JPanel implements KeyListener {
     public Tank getTank() {
         return tank;
     }
-    //    public byte getIndexTank() {
-//        return tank.getX();
-//    }
+
 
     public void showWindow (){
         this.setVisible(true);
     }
+    public void restartSettings(){
+        counterOfHits = 0;
+        counterOfMisses = 0;
+        counterOfSurvivors = 0;
+        this.tank.setX((byte) 0);
 
+        for (int i = 0; i < terrorists.length; i++) {
+            terrorists[i].resetTerroristsLoop();
+            if (i < 2){
+                soldiers[i].resetSoldiersLoop();
+            }
+        }
+    }
 }
 

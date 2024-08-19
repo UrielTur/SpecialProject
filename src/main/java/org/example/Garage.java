@@ -27,40 +27,26 @@ public class Garage extends JPanel {
         this.text.setForeground(Color.white);
         this.add(text);
 
-
         this.tankIcon1.setImage(this.tankIcon1.getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH));
         this.tank1 = new JButton(tankIcon1);
         this.tank1.setBounds(25, 440, 275, 100);// מגדיר מיקום וגודל לכפתור
         this.tank1.setContentAreaFilled(false);
         this.tank1.setBorder(null);
-
-
         this.add(tank1);
-
-
 
         this.tankIcon2.setImage(this.tankIcon2.getImage().getScaledInstance(320, 290, Image.SCALE_SMOOTH));
         this.tank2 = new JButton(tankIcon2);
         this.tank2.setBounds(350, 425, 320, 120);// מגדיר מיקום וגודל לכפתור
         this.tank2.setBorder(null);
         this.tank2.setContentAreaFilled(false);
-
         this.add(tank2);
-
-
 
         this.tankIcon3.setImage(this.tankIcon3.getImage().getScaledInstance(285, 170, Image.SCALE_SMOOTH));
         this.tank3 = new JButton(tankIcon3);
         this.tank3.setBounds(710, 415, 290, 130);// מגדיר מיקום וגודל לכפתור
         this.tank3.setBorder(null);
         this.tank3.setContentAreaFilled(false);
-
         this.add(tank3);
-
-
-
-
-
 
         this.backButton = new JButton("Back");
         this.backButton.setBounds(10, 600, 100, 50); // מגדיר מיקום וגודל לכפתור
@@ -70,14 +56,7 @@ public class Garage extends JPanel {
 
     public void paintComponent(Graphics graphics){
         super.paintComponent(graphics);
-//        this.background.paintIcon(null,graphics,this.xOfBackground, this.yOfBackground);
         graphics.drawImage(this.background, this.xOfBackground, this.yOfBackground, Window.getWINDOW_WIDTH(), Window.getWINDOW_HEIGHT(),null);
-//        graphics.drawImage(this.tankIcon.getImage(), 150, 350, 150, 145, null);
-//        graphics.drawImage(this.tankIcon,150, 350, tankIcon.getWidth(null), tankIcon.getHeight(null) ,null);
-
-
-
-
     }
 
     public JButton getBackButton() {

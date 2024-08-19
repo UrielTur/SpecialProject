@@ -30,14 +30,13 @@ public class OpeningScreen extends JPanel{
         this.header.setFont(new Font("Arial" , Font.BOLD, 70));
         this.header.setForeground(Color.white);
 
-
         this.enter = new JButton("Enter");
         this.enter.setBounds(xEnter, yEnter, widthEnter, heightEnter);
         this.enter.setFont(new Font("Arial",Font.BOLD, 35));
         this.enter.setForeground(Color.BLACK);
         this.enter.setBackground(Color.gray);
         this.enter.setFocusable(true);
-        this.enter.setFocusPainted(false);//מבטל את המסגרת התמידית מסביב לטקסט
+        this.enter.setFocusPainted(false);//מבט   ל את המסגרת התמידית מסביב לטקסט
         this.enter.setBorder(null);//מבטל את המסגרת המופיעה כשהעכבר על הכפתור
 
         this.enter.addKeyListener(new KeyListener() {
@@ -56,7 +55,6 @@ public class OpeningScreen extends JPanel{
             public void keyReleased(KeyEvent e) {
             }
         });
-
         this.add(header);
         this.add(enter);
     }
@@ -71,6 +69,4 @@ public class OpeningScreen extends JPanel{
     public JButton getEnter() {
         return enter;
     }
-
-
 }

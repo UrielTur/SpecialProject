@@ -1,16 +1,9 @@
 package org.example;
 
-import com.sun.jdi.LocalVariable;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class Helicopter {
-
     private Image helicopter;
     private final short x = 270;
     private final short y = 150;

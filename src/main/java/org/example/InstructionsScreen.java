@@ -9,12 +9,11 @@ public class InstructionsScreen extends JPanel {
     private final byte yOfBackground = 0;
     private final JButton backButton;
 
+
     public InstructionsScreen () {
         this.setVisible(false);
         this.setSize(Window.getWINDOW_WIDTH(), Window.getWINDOW_HEIGHT());
         this.setLayout(null);
-
-
         this.backButton = new JButton("Back");
         this.backButton.setBounds(10, 600, 100, 50); // מגדיר מיקום וגודל לכפתור
         this.backButton.setFont(new Font("Arial" , Font.BOLD , 20));
@@ -24,8 +23,6 @@ public class InstructionsScreen extends JPanel {
     public void paintComponent(Graphics graphics){
         super.paintComponent(graphics);
         graphics.drawImage(this.background,  this.xOfBackground, this.yOfBackground ,background.getWidth(null) ,background.getHeight(null),null);
-
-//        this.background.paintIcon(null,graphics,this.xOfBackground, this.yOfBackground);
     }
 
     public JButton getBackButton() {

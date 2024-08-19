@@ -1,10 +1,10 @@
 package org.example;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
 public class Terrorist extends Thread {
-
     private Image terrorist;
     private float x;
     private final short y;
@@ -17,26 +17,17 @@ public class Terrorist extends Thread {
     private boolean stillAlive = true;
 
 
-
-
     public Terrorist(int origin, int bound){
         this.random = new Random();
-
         this.x = (short) random.nextInt(origin , bound);
         this.y = (short) (Window.getWINDOW_HEIGHT()-155);
-
-
         this.terrorist = new ImageIcon("src/main/resources/terr-removebg-preview.png").getImage();
-
-
-
     }
     public void run(){
         while (this.stillAlive){
             if(isMove){
                 this.x -= 1.2;
             }
-
             try {
                 Thread.sleep(difficultLevel);
             } catch (InterruptedException e) {
@@ -47,8 +38,6 @@ public class Terrorist extends Thread {
 
 
     public void paintTerrorist(Graphics graphics) {
-
-//        Image scaledImage = this.terrorist.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         graphics.drawImage(terrorist, (short) this.x, (short) this.y,width,height,null);
     }
 
@@ -84,6 +73,10 @@ public class Terrorist extends Thread {
 
     public void setDifficultLevel(byte difficultLevel) {
         this.difficultLevel = difficultLevel;
+    }
+    public void resetTerroristsLoop(){
+        stillAlive = true;
+        difficultLevel = easy;
     }
 }
 

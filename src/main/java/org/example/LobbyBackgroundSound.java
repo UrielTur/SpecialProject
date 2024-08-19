@@ -10,21 +10,17 @@ public class LobbyBackgroundSound {
     private Clip clip;
 
 
-
     public void playWarSound() {
         try {
             audioInputStream = AudioSystem.getAudioInputStream(new File(getClass().getResource("/Lobby_audio.wav").toURI()).getAbsoluteFile());
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
-
             clip.start();
             clip.loop(Clip.LOOP_CONTINUOUSLY);
-
         } catch(Exception ex){
             System.out.println("Error with playing sound.");
             ex.printStackTrace();
         }
-
     }
 
     public void stopPlay() {

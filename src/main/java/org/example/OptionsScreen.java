@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class OptionsScreen extends JPanel {
-
-
     private JButton gameScene;
     private JButton instructions;
     private JButton garage;
@@ -15,18 +13,15 @@ public class OptionsScreen extends JPanel {
     private final byte yOfBackground = 0;
 
 
-
     public OptionsScreen(){
 
         this.setSize(Window.getWINDOW_WIDTH(), Window.getWINDOW_HEIGHT());
         setLayout(null);
 
-
         this.gameScene = new JButton("Start Play");
         this.gameScene.setBounds(10, 600, 150, 50); // מגדיר מיקום וגודל לכפתור
         this.gameScene.setFont(new Font("Arial" , Font.BOLD , 25));
         this.add(gameScene);
-
 
         this.garage = new JButton("Garage");
         this.garage.setBounds(190, 600, 150, 50); // מגדיר מיקום וגודל לכפתור
@@ -45,16 +40,13 @@ public class OptionsScreen extends JPanel {
             System.exit(0);
         });
         this.add(exitFromGame);
-
         this.background = new ImageIcon("src/main/resources/TankBackground.png").getImage();
-
     }
 
 
     public void paintComponent(Graphics graphics){
         super.paintComponent(graphics);
         graphics.drawImage(this.background,  this.xOfBackground, this.yOfBackground,background.getWidth(null) ,background.getHeight(null),null);
-
     }
 
     public void showWindow (){
@@ -72,5 +64,4 @@ public class OptionsScreen extends JPanel {
     public JButton getGarage() {
         return garage;
     }
-
 }

@@ -1,17 +1,11 @@
 package org.example;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.Random;
 
 public class Soldier extends Thread {
-
     private Image soldier;
-
-
     private float x;
     private short y;
     private final byte width = 65;
@@ -23,16 +17,11 @@ public class Soldier extends Thread {
     private boolean stillAlive = true;
 
 
-
     public Soldier(float origin, short bound){
         this.random = new Random();
-
         this.x = (float) random.nextInt((int) origin, bound);
         this.y = (short) (Window.getWINDOW_HEIGHT()-155);
-
         this.soldier = new ImageIcon( "src/main/resources/soldier-min.png").getImage();
-
-
     }
 
     public void run(){
@@ -40,7 +29,6 @@ public class Soldier extends Thread {
             if (isMove) {
                 move();
             }
-
             try {
                 Thread.sleep(difficultLevel);
             } catch (InterruptedException e) {
@@ -91,5 +79,9 @@ public class Soldier extends Thread {
 
     public void setStillAlive(boolean stillAlive) {
         this.stillAlive = stillAlive;
+    }
+    public void resetSoldiersLoop(){
+        stillAlive = true;
+        difficultLevel = easy;
     }
 }

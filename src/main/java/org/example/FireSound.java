@@ -6,12 +6,8 @@ import javax.sound.sampled.Clip;
 import java.io.File;
 
 public class FireSound {
-
-
     private AudioInputStream audioInputStream;
     private Clip clip;
-
-
 
 
     public void playFireSound() {
@@ -19,17 +15,10 @@ public class FireSound {
             audioInputStream = AudioSystem.getAudioInputStream(new File(getClass().getResource("/fire-sound.wav").toURI()).getAbsoluteFile());
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
-
-
             clip.start();
-
-
         } catch(Exception ex){
             System.out.println("Error with playing fire sound.");
             ex.printStackTrace();
         }
-
     }
-
-
 }
